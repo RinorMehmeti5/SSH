@@ -1,9 +1,10 @@
-﻿@model Lendet
+﻿<h1>Edit</h1>
+@model Lendet
 <form method="post">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2 class="text-primary">
-                Krijo Lende
+                Edito Lende
             </h2>
         </div>
         <div class="mb-3 row">
@@ -18,12 +19,12 @@
         </div>
         <div class="row">
             <div class="col-6 col-md-3">
-                <button type="submit" class="btn btn-primary form-control">Krijo</button>
+                <button type="submit" class="btn btn-primary form-control">Update</button>
             </div>
             <div class="col-6 col-md-3">
-            <a asp-controller="Lendet" asp-action="Index" class="btn btn-outline-secondary border form-control" >
-                Kthehu ne list
-            </a>
+                <a asp-controller="Lendet" asp-action="Index" class="btn btn-outline-secondary border form-control">
+                    Kthehu ne list
+                </a>
             </div>
         </div>
     </div>
@@ -31,6 +32,6 @@
 
 @section Scripts{
     @{
-        <partial name="_ValidationScriptsPartial"/>
+        <partial name="_ValidationScriptsPartial" />
     }
 }

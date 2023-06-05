@@ -23,6 +23,7 @@
                 <th>
                     Përshkrimi i lëndës
                 </th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +32,16 @@
                 <tr>
                     <td>@obj.Lname</td>
                     <td>@obj.Ldescription</td>
+                    <td>
+                        <div class="w-75 btn btn-group" role="group">
+                            <a asp-controller="Lendet" asp-action="Edit" asp-route-lendetid="@obj.Lid" class="btn btn-primary mx-2">
+                                <i class="bi bi-pencil-suqare"></i> Edit
+                            </a>
+                            <a asp-controller="Lendet" asp-action="Delete" class="btn btn-danger mx-2">
+                                <i class="bi bi-trash-fill"></i> Delete
+                            </a>
+                        </div>
+                    </td>
                 </tr>
             }
         </tbody>
