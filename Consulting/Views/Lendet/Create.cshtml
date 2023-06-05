@@ -1,0 +1,30 @@
+﻿@model Lendet
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">
+                Krijo Lende
+            </h2>
+        </div>
+        <div class="mb-3 row">
+            <label asp-for="Lname" class="p-0"></label>
+            <input asp-for="Lname" type="text" class="form-control" />
+            <span asp-validation-for="Lname" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row">
+            <label asp-for="Ldescription" class="p-0"></label>
+            <input asp-for="Ldescription" type="text" class="form-control" />
+            <span asp-validation-for="Ldescription" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Krijo</button>
+            </div>
+            <div class="col-6 col-md-3">
+            <a asp-controller="Lendet" asp-action="Index" class="btn btn-outline-secondary border form-control" >
+                Kthehu ne list
+            </a>
+            </div>
+        </div>
+    </div>
+</form>

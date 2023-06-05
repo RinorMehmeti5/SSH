@@ -1,0 +1,38 @@
+﻿@model List<Lendet>
+
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">
+                Lista e lendeve
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Lendet" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle-fill"></i>Krijo nje lende
+            </a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Emri i Lëndës
+                </th>
+                <th>
+                    Përshkrimi i lëndës
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>@obj.Lname</td>
+                    <td>@obj.Ldescription</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
