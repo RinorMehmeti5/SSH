@@ -33,18 +33,20 @@ namespace Consulting.Controllers
             {
                 _db.Lendet.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Lenda eshte krijuar me sukses";
                 return RedirectToAction("Index");
 
             }
             return View();
         }
-        public IActionResult Edit(int? Lid)
+        [HttpGet]
+        public IActionResult Edit(int? id)
         {
-            if (Lid == null || Lid == 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
-            Lendet? lendetprejdb = _db.Lendet.Find(Lid);
+            Lendet? lendetprejdb = _db.Lendet.Find(id);
             //Lendet? lendetprejdb1 = _db.Lendet.FirstOrDefault(u=>u.Lid==Lid);
             //Lendet? lendetprejdb2 = _db.Lendet.Where(u=>u.Lid == Lid).FirstOrDefault();
             if (lendetprejdb == null) 
@@ -61,18 +63,20 @@ namespace Consulting.Controllers
             {
                 _db.Lendet.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Lenda eshte edituar me sukses";
                 return RedirectToAction("Index");
 
             }
             return View();
         }
-        public IActionResult Delete(int? Lid)
+        [HttpGet]
+        public IActionResult Delete(int? id)
         {
-            if (Lid == null || Lid == 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
-            Lendet? lendetprejdb = _db.Lendet.Find(Lid);
+            Lendet? lendetprejdb = _db.Lendet.Find(id);
             //Lendet? lendetprejdb1 = _db.Lendet.FirstOrDefault(u=>u.Lid==Lid);
             //Lendet? lendetprejdb2 = _db.Lendet.Where(u=>u.Lid == Lid).FirstOrDefault();
             if (lendetprejdb == null)
@@ -82,15 +86,16 @@ namespace Consulting.Controllers
             return View(lendetprejdb);
         }
         [HttpPost, ActionName("Delete")]
-        public IActionResult DeletePost(int? Lid)
+        public IActionResult DeletePost(int? id)
         {
-            Lendet? obj =_db.Lendet.Find(Lid);
+            Lendet? obj =_db.Lendet.Find(id);
             if (obj == null)
             {
                 return NotFound();
             }
             _db.Lendet.Remove(obj); 
             _db.SaveChanges();
+            TempData["success"] = "Lenda eshte fshire me sukses";
             return RedirectToAction("Index");
         }
     }
