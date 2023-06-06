@@ -1,7 +1,6 @@
 ﻿using Consult.DataAcess.Data;
 using Consult.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Consult.Controllers
 {
