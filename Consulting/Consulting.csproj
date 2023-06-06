@@ -21,6 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Consulting.Models\Consult.Models.csproj" />
+    <ProjectReference Include="..\Consulting.Utility\Consult.Utility.csproj" />
     <ProjectReference Include="..\Cunsulting.DataAccess\Cunsult.DataAcess.csproj" />
   </ItemGroup>
 

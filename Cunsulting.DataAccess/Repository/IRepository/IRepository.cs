@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cunsult.DataAcess.Repository.IRepository
 {
-    internal interface IRepository<T> where T : class
+    public interface IRepository<T> where T : class
     {
         //T - Lendet
         IEnumerable<T> GetAll();
