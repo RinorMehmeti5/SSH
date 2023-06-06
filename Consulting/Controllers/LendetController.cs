@@ -1,9 +1,9 @@
-﻿using Consulting.Data;
-using Consulting.Models;
+﻿using Consult.DataAcess.Data;
+using Consult.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace Consulting.Controllers
+namespace Consult.Controllers
 {
     public class LendetController : Controller
     {

@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace Consulting.Migrations
+namespace Consult.DataAcess.Migrations
 {
     /// <inheritdoc />
     public partial class ShtoTeDhenaNeTabelenLendet : Migration

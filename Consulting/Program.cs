@@ -1,4 +1,4 @@
-using Consulting.Data;
+using Consult.DataAcess.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

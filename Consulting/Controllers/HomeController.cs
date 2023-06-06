@@ -1,8 +1,8 @@
-﻿using Consulting.Models;
+﻿using Consult.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Consulting.Controllers
+namespace Consult.Controllers
 {
     public class HomeController : Controller
     {

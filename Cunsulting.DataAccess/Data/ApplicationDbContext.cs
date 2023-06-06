@@ -1,7 +1,7 @@
-﻿using Consulting.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Consult.Models;
 
-namespace Consulting.Data
+namespace Consult.DataAcess.Data
 {
     public class ApplicationDbContext : DbContext
     {

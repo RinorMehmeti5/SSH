@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Consulting.Migrations
+namespace Consult.DataAcess.Migrations
 {
     /// <inheritdoc />
     public partial class AddLendetToDb : Migration

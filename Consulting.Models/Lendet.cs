@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Consulting.Models
+namespace Consult.Models
 {
     public class Lendet
     {

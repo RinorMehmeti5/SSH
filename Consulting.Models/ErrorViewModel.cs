@@ -1,4 +1,4 @@
-namespace Consulting.Models
+namespace Consult.Models
 {
     public class ErrorViewModel
     {
