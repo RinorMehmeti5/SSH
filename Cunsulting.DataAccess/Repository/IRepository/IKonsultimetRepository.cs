@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Consult.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace Cunsult.DataAcess.Repository.IRepository
 {
-    public interface IUnitOfWork
+    public interface IKonsultimetRespository : IRepository<Konsultimet>
     {
-        ILendetRepository Lendet { get; }
-        IKonsultimetRespository Konsultimet { get; }
-
-        void Save();
+        void Update(Konsultimet obj);
     }
 }

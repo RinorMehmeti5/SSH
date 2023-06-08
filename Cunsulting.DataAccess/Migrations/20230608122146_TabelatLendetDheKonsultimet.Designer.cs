@@ -4,6 +4,7 @@ using Consult.DataAcess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cunsult.DataAcess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230608122146_TabelatLendetDheKonsultimet")]
+    partial class TabelatLendetDheKonsultimet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,15 +55,13 @@ namespace Cunsult.DataAcess.Migrations
 
                     b.HasKey("Kid");
 
-                    b.HasIndex("KLid");
-
                     b.ToTable("Konsultimet");
 
                     b.HasData(
                         new
                         {
                             Kid = 1,
-                            KLid = 100,
+                            KLid = 0,
                             KPid = 0,
                             KkohaEFillimit = new DateTime(2023, 6, 8, 16, 0, 0, 0, DateTimeKind.Unspecified),
                             KkohaEMbarimit = new DateTime(2023, 6, 8, 16, 30, 0, 0, DateTimeKind.Unspecified),
@@ -70,7 +71,7 @@ namespace Cunsult.DataAcess.Migrations
                         new
                         {
                             Kid = 2,
-                            KLid = 100,
+                            KLid = 0,
                             KPid = 0,
                             KkohaEFillimit = new DateTime(2023, 6, 8, 17, 0, 0, 0, DateTimeKind.Unspecified),
                             KkohaEMbarimit = new DateTime(2023, 6, 8, 17, 30, 0, 0, DateTimeKind.Unspecified),
@@ -80,7 +81,7 @@ namespace Cunsult.DataAcess.Migrations
                         new
                         {
                             Kid = 3,
-                            KLid = 103,
+                            KLid = 0,
                             KPid = 0,
                             KkohaEFillimit = new DateTime(2023, 6, 9, 16, 0, 0, 0, DateTimeKind.Unspecified),
                             KkohaEMbarimit = new DateTime(2023, 6, 9, 16, 30, 0, 0, DateTimeKind.Unspecified),
@@ -90,7 +91,7 @@ namespace Cunsult.DataAcess.Migrations
                         new
                         {
                             Kid = 4,
-                            KLid = 103,
+                            KLid = 0,
                             KPid = 0,
                             KkohaEFillimit = new DateTime(2023, 6, 10, 16, 0, 0, 0, DateTimeKind.Unspecified),
                             KkohaEMbarimit = new DateTime(2023, 6, 10, 16, 30, 0, 0, DateTimeKind.Unspecified),
@@ -145,17 +146,6 @@ namespace Cunsult.DataAcess.Migrations
                             Ldescription = "Kjo lende ka 7 kredi",
                             Lname = "Bazat e inxhinierise elektrike 1"
                         });
-                });
-
-            modelBuilder.Entity("Consult.Models.Konsultimet", b =>
-                {
-                    b.HasOne("Consult.Models.Lendet", "Lid")
-                        .WithMany()
-                        .HasForeignKey("KLid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Lid");
                 });
 #pragma warning restore 612, 618
         }

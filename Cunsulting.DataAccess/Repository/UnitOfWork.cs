@@ -12,10 +12,12 @@ namespace Cunsult.DataAcess.Repository
     {
         private readonly ApplicationDbContext _db;
         public ILendetRepository Lendet { get; private set; } 
+        public IKonsultimetRespository Konsultimet { get; private set; }
         public UnitOfWork(ApplicationDbContext db)  
         {
             _db = db;
             Lendet = new LendetRespository(_db);
+            Konsultimet = new KonsultimetRespository(_db);
         }
 
         public void Save()

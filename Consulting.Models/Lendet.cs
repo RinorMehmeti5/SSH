@@ -14,5 +14,6 @@ namespace Consult.Models
         [Required]
         [DisplayName("Pershkrimi")]
         public string? Ldescription { get; set; }
+        public int LPid { get; set; }
     }
 }

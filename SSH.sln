@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.7.33711.374
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consulting", "Consulting\Consulting.csproj", "{6036AF05-29F9-44FE-8A3C-BF7E886FA43D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F76BC348-97B2-4310-9CCF-F18D5BEC0F58} = {F76BC348-97B2-4310-9CCF-F18D5BEC0F58}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cunsult.DataAcess", "Cunsulting.DataAccess\Cunsult.DataAcess.csproj", "{9D62E785-38FA-4DFF-890A-FB0031834F21}"
 EndProject
