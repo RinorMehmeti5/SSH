@@ -1,20 +1,22 @@
 ﻿using Consult.DataAcess.Data;
 using Consult.Models;
+using Cunsult.DataAcess.Repository;
 using Cunsult.DataAcess.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Consult.Controllers
+namespace Consulting.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class LendetController : Controller
     {
-        private readonly ILendetRepository _lendetrep;
-        public LendetController(ILendetRepository db)
+        private readonly IUnitOfWork _unitOfWork;
+        public LendetController(IUnitOfWork unitOfWork)
         {
-            _lendetrep = db;
+            _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            List<Lendet> LendetList = _lendetrep.GetAll().ToList();
+            List<Lendet> LendetList = _unitOfWork.Lendet.GetAll().ToList();
             return View(LendetList);
         }
         [HttpGet]
@@ -31,8 +33,8 @@ namespace Consult.Controllers
             //}
             if (ModelState.IsValid)
             {
-                _lendetrep.Add(obj);
-                _lendetrep.Save();
+                _unitOfWork.Lendet.Add(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "Lenda eshte krijuar me sukses";
                 return RedirectToAction("Index");
 
@@ -46,12 +48,12 @@ namespace Consult.Controllers
             {
                 return NotFound();
             }
-            Lendet? lendetprejdb = _lendetrep.Get(u => u.Lid == id);
+            Lendet? lendetprejdb = _unitOfWork.Lendet.Get(u => u.Lid == id);
             //Lendet? lendetprejdb1 = _db.Lendet.FirstOrDefault(u=>u.Lid==Lid);
             //Lendet? lendetprejdb2 = _db.Lendet.Where(u=>u.Lid == Lid).FirstOrDefault();
-            if (lendetprejdb == null) 
+            if (lendetprejdb == null)
             {
-                return NotFound(); 
+                return NotFound();
             }
             return View(lendetprejdb);
         }
@@ -61,8 +63,8 @@ namespace Consult.Controllers
 
             if (ModelState.IsValid)
             {
-                _lendetrep.Update(obj);
-                _lendetrep.Save();
+                _unitOfWork.Lendet.Update(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "Lenda eshte edituar me sukses";
                 return RedirectToAction("Index");
 
@@ -76,7 +78,7 @@ namespace Consult.Controllers
             {
                 return NotFound();
             }
-            Lendet? lendetprejdb = _lendetrep.Get(u => u.Lid == id);
+            Lendet? lendetprejdb = _unitOfWork.Lendet.Get(u => u.Lid == id);
             //Lendet? lendetprejdb1 = _db.Lendet.FirstOrDefault(u=>u.Lid==Lid);
             //Lendet? lendetprejdb2 = _db.Lendet.Where(u=>u.Lid == Lid).FirstOrDefault();
             if (lendetprejdb == null)
@@ -88,13 +90,13 @@ namespace Consult.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePost(int? id)
         {
-            Lendet? obj = _lendetrep.Get(u => u.Lid == id);
+            Lendet? obj = _unitOfWork.Lendet.Get(u => u.Lid == id);
             if (obj == null)
             {
                 return NotFound();
             }
-            _lendetrep.Remove(obj);
-            _lendetrep.Save();
+            _unitOfWork.Lendet.Remove(obj);
+            _unitOfWork.Save();
             TempData["success"] = "Lenda eshte fshire me sukses";
             return RedirectToAction("Index");
         }

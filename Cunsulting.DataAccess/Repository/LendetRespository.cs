@@ -19,6 +19,7 @@ namespace Cunsult.DataAcess.Repository
             _db = db;
         }
 
+
         public void Update(Lendet obj)
         {
             _db.Lendet.Update(obj);

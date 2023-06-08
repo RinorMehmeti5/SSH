@@ -18,14 +18,14 @@ namespace Cunsult.DataAcess.Repository
         {
             _db = db;
             this.dbSet = _db.Set<T>();
-            //_db_Lendet == dbSet
+            //_db.Lendet == dbSet
         }
         public void Add(T entity)
         {
             dbSet.Add(entity);
         }
 
-        public void DeleteRange(IEnumerable<T> entity)
+        public void RemoveRange(IEnumerable<T> entity)
         {
             dbSet.RemoveRange(entity);
         }

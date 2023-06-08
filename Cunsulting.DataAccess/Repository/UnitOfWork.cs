@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Cunsult.DataAcess.Repository
 {
-    public class UnitOfWork : IUnitOfwork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext _db;
         public ILendetRepository Lendet { get; private set; } 

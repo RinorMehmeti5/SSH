@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cunsult.DataAcess.Repository.IRepository
 {
-    internal interface IUnitOfwork
+    public interface IUnitOfWork
     {
         ILendetRepository Lendet { get; }
 
