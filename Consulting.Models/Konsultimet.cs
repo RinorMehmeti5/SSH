@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System.Reflection.Metadata.Ecma335;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace Consult.Models
 {
@@ -31,7 +32,9 @@ namespace Consult.Models
         [DisplayName("Lënda për konsultim")]
         public int KLid { get; set; }
         [ForeignKey("KLid")]
+        [ValidateNever]
         public Lendet Lid { get; set; }
+        [ValidateNever]
         public int KPid { get; set; }
     }
 }

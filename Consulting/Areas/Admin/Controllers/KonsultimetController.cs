@@ -19,11 +19,11 @@ namespace Consulting.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            List<Konsultimet> KonsultimetList = _unitOfWork.Konsultimet.GetAll().ToList();
+            List<Konsultimet> KonsultimetList = _unitOfWork.Konsultimet.GetAll(includeProperties:"Lid").ToList();
             return View(KonsultimetList);
         }
-        [HttpGet]
-        public IActionResult Create()
+        
+        public IActionResult Upsert(int? id)
         {
             KunsultimetVM KunsultimetVM = new()
             {
@@ -35,10 +35,18 @@ namespace Consulting.Areas.Admin.Controllers
                     }),
                 Konsultimet = new Konsultimet()
             };
-            return View(KunsultimetVM);
+            if (id==null || id==0)
+            {
+                //create
+                return View(KunsultimetVM);
+            } else{
+                //update
+                KunsultimetVM.Konsultimet = _unitOfWork.Konsultimet.Get(u=>u.Kid==id);
+                return View(KunsultimetVM);
+            }
         }
         [HttpPost]
-        public IActionResult Create(Konsultimet obj)
+        public IActionResult Upsert(KunsultimetVM obj)
         {
             //if (obj.Lname == obj.Ldescription.ToString())
             //{
@@ -46,39 +54,9 @@ namespace Consulting.Areas.Admin.Controllers
             //}
             if (ModelState.IsValid)
             {
-                _unitOfWork.Konsultimet.Add(obj);
+                _unitOfWork.Konsultimet.Add(obj.Konsultimet);
                 _unitOfWork.Save();
                 TempData["success"] = "Lenda eshte krijuar me sukses";
-                return RedirectToAction("Index");
-
-            }
-            return View();
-        }
-        [HttpGet]
-        public IActionResult Edit(int? id)
-        {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-            Konsultimet? konsultimetprejdb = _unitOfWork.Konsultimet.Get(u => u.Kid == id);
-            //Konsultimet? konsultimetprejdb1 = _db.Konsultimet.FirstOrDefault(u=>u.Lid==Lid);
-            //Konsultimet? konsultimetprejdb2 = _db.Konsultimet.Where(u=>u.Lid == Lid).FirstOrDefault();
-            if (konsultimetprejdb == null)
-            {
-                return NotFound();
-            }
-            return View(konsultimetprejdb);
-        }
-        [HttpPost]
-        public IActionResult Edit(Konsultimet obj)
-        {
-
-            if (ModelState.IsValid)
-            {
-                _unitOfWork.Konsultimet.Update(obj);
-                _unitOfWork.Save();
-                TempData["success"] = "Lenda eshte edituar me sukses";
                 return RedirectToAction("Index");
 
             }
@@ -113,5 +91,13 @@ namespace Consulting.Areas.Admin.Controllers
             TempData["success"] = "Lenda eshte fshire me sukses";
             return RedirectToAction("Index");
         }
+        #region API Calls
+        [HttpGet]
+        public IActionResult GetAll() {
+            List<Konsultimet> KonsultimetList = _unitOfWork.Konsultimet.GetAll(includeProperties: "Lid").ToList();
+            return Json(new {data =  KonsultimetList});
+        }
+            
+        #endregion
     }
 }

@@ -19,6 +19,7 @@ namespace Cunsult.DataAcess.Repository
             _db = db;
             this.dbSet = _db.Set<T>();
             //_db.Lendet == dbSet
+            _db.Konsultimet.Include(u => u.Lid);
         }
         public void Add(T entity)
         {
@@ -30,17 +31,31 @@ namespace Cunsult.DataAcess.Repository
             dbSet.RemoveRange(entity);
         }
 
-        public T Get(Expression<Func<T, bool>> filter)
+        public T Get(Expression<Func<T, bool>> filter , string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
             query = query.Where(filter);
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach (var includeProp in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                    query = query.Include(includeProp);
+                }
+            }
             return query.FirstOrDefault();
         }
 
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll(string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
+            if(!string.IsNullOrEmpty(includeProperties))
+            {
+                 foreach(var includeProp in includeProperties.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries)) 
+                    {
+                    query = query.Include(includeProp);
+                    }
+            }
             return query.ToList();
         }
 
