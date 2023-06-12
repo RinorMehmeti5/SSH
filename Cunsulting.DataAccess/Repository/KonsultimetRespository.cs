@@ -22,7 +22,15 @@ namespace Cunsult.DataAcess.Repository
 
         public void Update(Konsultimet obj)
         {
-            _db.Konsultimet.Update(obj);
+            var objFromDb = _db.Konsultimet.FirstOrDefault(u=>u.Kid == obj.Kid);
+            if (objFromDb != null)
+            {
+                objFromDb.Ktitle = obj.Ktitle;
+                objFromDb.Kpershkrimi = obj.Kpershkrimi;
+                objFromDb.KkohaEMbarimit = obj.KkohaEMbarimit;
+                objFromDb.KkohaEFillimit = obj.KkohaEFillimit;
+                objFromDb.KLid = obj.KLid;
+            }
         }
     }
 }

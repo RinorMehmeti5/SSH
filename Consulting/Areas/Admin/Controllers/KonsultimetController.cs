@@ -46,7 +46,7 @@ namespace Consulting.Areas.Admin.Controllers
             }
         }
         [HttpPost]
-        public IActionResult Upsert(KunsultimetVM obj)
+        public IActionResult Upsert(KunsultimetVM konsultimetVM)
         {
             //if (obj.Lname == obj.Ldescription.ToString())
             //{
@@ -54,42 +54,20 @@ namespace Consulting.Areas.Admin.Controllers
             //}
             if (ModelState.IsValid)
             {
-                _unitOfWork.Konsultimet.Add(obj.Konsultimet);
+                if(konsultimetVM.Konsultimet.Kid == 0)
+                {
+                    _unitOfWork.Konsultimet.Add(konsultimetVM.Konsultimet);
+                }
+                else
+                {
+                    _unitOfWork.Konsultimet.Update(konsultimetVM.Konsultimet);
+                    TempData["success"] = "Lenda eshte krijuar me sukses";
+                }
                 _unitOfWork.Save();
-                TempData["success"] = "Lenda eshte krijuar me sukses";
                 return RedirectToAction("Index");
 
             }
             return View();
-        }
-        [HttpGet]
-        public IActionResult Delete(int? id)
-        {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-            Konsultimet? konsultimetprejdb = _unitOfWork.Konsultimet.Get(u => u.Kid == id);
-            //Konsultimet? konsultimetprejdb1 = _db.Konsultimet.FirstOrDefault(u=>u.Lid==Lid);
-            //Konsultimet? konsultimetprejdb2 = _db.Konsultimet.Where(u=>u.Lid == Lid).FirstOrDefault();
-            if (konsultimetprejdb == null)
-            {
-                return NotFound();
-            }
-            return View(konsultimetprejdb);
-        }
-        [HttpPost, ActionName("Delete")]
-        public IActionResult DeletePost(int? id)
-        {
-            Konsultimet? obj = _unitOfWork.Konsultimet.Get(u => u.Kid == id);
-            if (obj == null)
-            {
-                return NotFound();
-            }
-            _unitOfWork.Konsultimet.Remove(obj);
-            _unitOfWork.Save();
-            TempData["success"] = "Lenda eshte fshire me sukses";
-            return RedirectToAction("Index");
         }
         #region API Calls
         [HttpGet]
@@ -97,7 +75,24 @@ namespace Consulting.Areas.Admin.Controllers
             List<Konsultimet> KonsultimetList = _unitOfWork.Konsultimet.GetAll(includeProperties: "Lid").ToList();
             return Json(new {data =  KonsultimetList});
         }
-            
+
+        [HttpDelete]
+        public IActionResult Delete(int? id)
+        {
+            var konsultimetToBeDeleted = _unitOfWork.Konsultimet.Get(u=> u.Kid == id);
+            if(konsultimetToBeDeleted == null)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "error while deleting"
+                });
+            }
+            _unitOfWork.Konsultimet.Remove(konsultimetToBeDeleted); 
+            _unitOfWork.Save();
+            return Json(new { success= true, message = "Delete successful"});
+        }
+
         #endregion
     }
 }
