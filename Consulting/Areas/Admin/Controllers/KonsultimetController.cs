@@ -1,15 +1,19 @@
 ﻿using Consult.DataAcess.Data;
 using Consult.Models;
 using Consult.Models.ViewModels;
+using Consult.Utility;
 using Cunsult.DataAcess.Repository;
 using Cunsult.DataAcess.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Consulting.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class KonsultimetController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

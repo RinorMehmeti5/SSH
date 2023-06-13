@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Consult.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Consult.DataAcess.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -11,9 +13,10 @@ namespace Consult.DataAcess.Data
         }
         public DbSet<Lendet> Lendet { get; set; }
         public DbSet<Konsultimet> Konsultimet { get; set; }
-
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Lendet>().HasData(
                 new Lendet { Lid = 100, Lname = "Algjebra lineare dhe kalkulus 1", Ldescription = "Kjo lende ka 7 kredi" },
                 new Lendet { Lid = 101, Lname = "Fizika 1", Ldescription = "Kjo lende ka 6 kredi" },

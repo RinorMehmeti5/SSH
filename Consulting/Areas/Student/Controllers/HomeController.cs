@@ -1,5 +1,7 @@
 ﻿using Consult.Models;
+using Cunsult.DataAcess.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata;
 using System.Diagnostics;
 
 namespace Consulting.Areas.Student.Controllers
@@ -8,15 +10,24 @@ namespace Consulting.Areas.Student.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
         {
             _logger = logger;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Konsultimet> konsultimetList = _unitOfWork.Konsultimet.GetAll(includeProperties: "Lid");
+            return View(konsultimetList);
+        }
+
+        public IActionResult Details(int id)
+        {
+            Konsultimet konsultimet = _unitOfWork.Konsultimet.Get(u=>u.Kid==id, includeProperties: "Lid");
+            return View(konsultimet);
         }
 
         public IActionResult Privacy()
