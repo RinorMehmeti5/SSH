@@ -13,7 +13,7 @@ using System.Data;
 namespace Consulting.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = SD.Role_Admin)]
+    //[Authorize(Roles = SD.Role_Admin)]
     public class KonsultimetController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -65,8 +65,8 @@ namespace Consulting.Areas.Admin.Controllers
                 else
                 {
                     _unitOfWork.Konsultimet.Update(konsultimetVM.Konsultimet);
-                    TempData["success"] = "Lenda eshte krijuar me sukses";
                 }
+                TempData["success"] = "Konsultimi eshte krijuar me sukses";
                 _unitOfWork.Save();
                 return RedirectToAction("Index");
 

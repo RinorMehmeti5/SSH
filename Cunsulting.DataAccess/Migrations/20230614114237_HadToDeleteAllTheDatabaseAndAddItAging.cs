@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Cunsult.DataAcess.Migrations
 {
     /// <inheritdoc />
-    public partial class addIdentityTables : Migration
+    public partial class HadToDeleteAllTheDatabaseAndAddItAging : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,6 +32,12 @@ namespace Cunsult.DataAcess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StreetAdress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -48,6 +56,34 @@ namespace Cunsult.DataAcess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Departamentet",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Departamentet", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Lendet",
+                columns: table => new
+                {
+                    Lid = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Lname = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    Ldescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LPid = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Lendet", x => x.Lid);
                 });
 
             migrationBuilder.CreateTable(
@@ -96,8 +132,8 @@ namespace Cunsult.DataAcess.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
@@ -141,8 +177,8 @@ namespace Cunsult.DataAcess.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -154,6 +190,62 @@ namespace Cunsult.DataAcess.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Konsultimet",
+                columns: table => new
+                {
+                    Kid = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Ktitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    KkohaEFillimit = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    KkohaEMbarimit = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Kpershkrimi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    KLid = table.Column<int>(type: "int", nullable: false),
+                    KPid = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Konsultimet", x => x.Kid);
+                    table.ForeignKey(
+                        name: "FK_Konsultimet_Lendet_KLid",
+                        column: x => x.KLid,
+                        principalTable: "Lendet",
+                        principalColumn: "Lid",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Departamentet",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 10, "Inxhinieri Kompjuterike dhe Softuerike" },
+                    { 11, "Elektronikë, Automatikë dhe Robotikë" },
+                    { 12, "Teknologjite e Informacionit dhe Komunikimit" },
+                    { 13, "Elektroenergjetike" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Lendet",
+                columns: new[] { "Lid", "LPid", "Ldescription", "Lname" },
+                values: new object[,]
+                {
+                    { 100, 0, "Kjo lende ka 7 kredi", "Algjebra lineare dhe kalkulus 1" },
+                    { 101, 0, "Kjo lende ka 6 kredi", "Fizika 1" },
+                    { 103, 0, "Kjo lende ka 7 kredi", "Bazat e inxhinierise elektrike 1" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Konsultimet",
+                columns: new[] { "Kid", "KLid", "KPid", "KkohaEFillimit", "KkohaEMbarimit", "Kpershkrimi", "Ktitle" },
+                values: new object[,]
+                {
+                    { 1, 100, 0, new DateTime(2023, 6, 8, 16, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 6, 8, 16, 30, 0, 0, DateTimeKind.Unspecified), "Konsultime nga lenda e Fizikës", "Konsultimi 1" },
+                    { 2, 100, 0, new DateTime(2023, 6, 8, 17, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 6, 8, 17, 30, 0, 0, DateTimeKind.Unspecified), "Konsultime nga lenda e Siguris", "Konsultimi 2" },
+                    { 3, 103, 0, new DateTime(2023, 6, 9, 16, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 6, 9, 16, 30, 0, 0, DateTimeKind.Unspecified), "Konsultime nga lenda e Matematikes", "Konsultimi 3" },
+                    { 4, 103, 0, new DateTime(2023, 6, 10, 16, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 6, 10, 16, 30, 0, 0, DateTimeKind.Unspecified), "Konsultime nga lenda e Sinjaleve", "Konsultimi 4" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -194,6 +286,11 @@ namespace Cunsult.DataAcess.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Konsultimet_KLid",
+                table: "Konsultimet",
+                column: "KLid");
         }
 
         /// <inheritdoc />
@@ -215,10 +312,19 @@ namespace Cunsult.DataAcess.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Departamentet");
+
+            migrationBuilder.DropTable(
+                name: "Konsultimet");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Lendet");
         }
     }
 }

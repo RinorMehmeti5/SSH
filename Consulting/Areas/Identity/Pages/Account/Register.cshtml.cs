@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Consult.Models;
 using Consult.Utility;
+using Cunsult.DataAcess.Repository.IRepository;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -35,6 +36,7 @@ namespace Consulting.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IUnitOfWork _unitOfWork;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
@@ -42,8 +44,10 @@ namespace Consulting.Areas.Identity.Pages.Account
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IUnitOfWork unitOfWork)
         {
+            _unitOfWork = unitOfWork;
             _userManager = userManager;
             _roleManager = roleManager;
             _userStore = userStore;
@@ -113,9 +117,12 @@ namespace Consulting.Areas.Identity.Pages.Account
             public string? Name { get; set; }
             public string? StreetAddress { get; set; }
             public string? City { get; set; }
-            public string? State{ get; set; }
-            public string? PostalCode{ get; set; }
+            public string? State { get; set; }
+            public string? PostalCode { get; set; }
             public string? PhoneNumber { get; set; }
+            public int? DepartamentID { get; set; }
+            [ValidateNever]
+            public IEnumerable<SelectListItem> DepartamentList { get; set; }
         }
 
 
@@ -134,6 +141,11 @@ namespace Consulting.Areas.Identity.Pages.Account
                 {
                     Text = i,
                     Value = i
+                }),
+                DepartamentList = _unitOfWork.Departamentet.GetAll().Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
                 })
             };
             ReturnUrl = returnUrl;
@@ -156,6 +168,10 @@ namespace Consulting.Areas.Identity.Pages.Account
                 user.State = Input.State;
                 user.PostalCode = Input.PostalCode;
                 user.PhoneNumber = Input.PhoneNumber;
+                if (Input.Role == SD.Role_Student)
+                {
+                    user.DepartamentID = Input.DepartamentID;
+                }
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
@@ -165,7 +181,8 @@ namespace Consulting.Areas.Identity.Pages.Account
                     if (!String.IsNullOrEmpty(Input.Role))
                     {
                         await _userManager.AddToRoleAsync(user, Input.Role);
-                    } else
+                    }
+                    else
                     {
                         await _userManager.AddToRoleAsync(user, SD.Role_Costumer);
                     }

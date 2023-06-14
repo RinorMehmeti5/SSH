@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cunsult.DataAcess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230613083812_ExtendIdentityUser")]
-    partial class ExtendIdentityUser
+    [Migration("20230614123210_addDepartamentToUser")]
+    partial class addDepartamentToUser
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,45 @@ namespace Cunsult.DataAcess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Consult.Models.Departament", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Departamentet");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 10,
+                            Name = "Inxhinieri Kompjuterike dhe Softuerike"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Elektronikë, Automatikë dhe Robotikë"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Teknologjite e Informacionit dhe Komunikimit"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Elektroenergjetike"
+                        });
+                });
 
             modelBuilder.Entity("Consult.Models.Konsultimet", b =>
                 {
@@ -303,12 +342,10 @@ namespace Cunsult.DataAcess.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -345,12 +382,10 @@ namespace Cunsult.DataAcess.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -367,6 +402,9 @@ namespace Cunsult.DataAcess.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("DepartamentID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -379,6 +417,8 @@ namespace Cunsult.DataAcess.Migrations
 
                     b.Property<string>("StreetAdress")
                         .HasColumnType("nvarchar(max)");
+
+                    b.HasIndex("DepartamentID");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
@@ -443,6 +483,15 @@ namespace Cunsult.DataAcess.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Consult.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("Consult.Models.Departament", "Departament")
+                        .WithMany()
+                        .HasForeignKey("DepartamentID");
+
+                    b.Navigation("Departament");
                 });
 #pragma warning restore 612, 618
         }
