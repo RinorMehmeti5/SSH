@@ -13,7 +13,7 @@ using System.Data;
 namespace Consulting.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Roles = SD.Role_Admin)]
+    [Authorize(Roles = SD.Role_Admin)]
     public class KonsultimetController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
