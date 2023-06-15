@@ -18,9 +18,15 @@ namespace Consult.Models
         public string? City { get; set; }
         public string? State { get; set; }
         public string? PostalCode { get; set; }
+        public string? Country { get; set; }
+        public string? FKID { get; set; }
         public int? DepartamentID { get; set; }
         [ForeignKey("Id")]
         [ValidateNever]
-        public Departament Departament { get; set; }
+        public Departament? Departament { get; set; }
+        public int? VitiID { get; set; }
+        [ForeignKey("Id")]
+        [ValidateNever]
+        public Viti? Viti{ get; set; }
     }
 }

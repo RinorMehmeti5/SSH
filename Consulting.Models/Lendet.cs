@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Consult.Models
 {
@@ -11,9 +13,18 @@ namespace Consult.Models
         [DisplayName("Emri i lendes")]
         [MaxLength(40)]
         public string? Lname { get; set; }
-        [Required]
-        [DisplayName("Pershkrimi")]
-        public string? Ldescription { get; set; }
-        public int LPid { get; set; }
+        public string UserId { get; set; }
+        [ForeignKey("Id")]
+        [ValidateNever]
+        public ApplicationUser? User { get; set; }
+
+        public int DepartamentId{ get; set; }
+        [ForeignKey("DepartamentId")]
+        [ValidateNever]
+        public Departament? Departament { get; set; }
+        public int? VitiID { get; set; }
+        [ForeignKey("Id")]
+        [ValidateNever]
+        public Viti? Viti { get; set; }
     }
 }

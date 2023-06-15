@@ -21,20 +21,23 @@ namespace Consult.Models
         public string? Ktitle { get; set; }
         [DisplayName("Koha e fillimit")]
 
+        [Required]
         public DateTime KkohaEFillimit { get; set; }
         [DisplayName("Koha e mbarimit")]
 
         public DateTime KkohaEMbarimit { get; set; }
         [DisplayName("Përshkrimi i konsultimit")]
 
-        public string Kpershkrimi { get; set; }
+        public string? Kpershkrimi { get; set; }
 
         [DisplayName("Lënda për konsultim")]
         public int KLid { get; set; }
         [ForeignKey("KLid")]
         [ValidateNever]
-        public Lendet Lid { get; set; }
+        public Lendet Lendet { get; set; }
+        public string UserId { get; set; }
+        [ForeignKey("Id")]
         [ValidateNever]
-        public int KPid { get; set; }
+        public ApplicationUser? User{ get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using Consult.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Consult.DataAcess.Data
 {
@@ -13,15 +14,174 @@ namespace Consult.DataAcess.Data
         }
         public DbSet<Lendet> Lendet { get; set; }
         public DbSet<Konsultimet> Konsultimet { get; set; }
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-        public DbSet<Departament> Departamentet{ get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<Departament> Departament { get; set; }
+        public DbSet<Viti> Viti { get; set; }
+
+        public DbSet<KonsultimAttend> KonsultimAttend { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Lendet>().HasData(
-                new Lendet { Lid = 100, Lname = "Algjebra lineare dhe kalkulus 1", Ldescription = "Kjo lende ka 7 kredi" },
-                new Lendet { Lid = 101, Lname = "Fizika 1", Ldescription = "Kjo lende ka 6 kredi" },
-                new Lendet { Lid = 103, Lname = "Bazat e inxhinierise elektrike 1", Ldescription = "Kjo lende ka 7 kredi" }
+                new Lendet { Lid = 100, Lname = "Algjebra lineare dhe kalkulus 1", DepartamentId= 10 , VitiID=1},
+                new Lendet { Lid = 101, Lname = "Fizika 1", DepartamentId = 10 },
+                new Lendet { Lid = 102, Lname = "Bazat e inxhinierise elektrike 1", DepartamentId = 10, VitiID = 1 },
+                new Lendet { Lid = 103, Lname = "Bazat e Programimit", DepartamentId = 10, VitiID = 1 },
+                new Lendet { Lid = 104, Lname = "Anglishtja teknike", DepartamentId = 10, VitiID = 1 },
+                new Lendet { Lid = 105, Lname = "Shkathtësi komunikuese", DepartamentId = 10, VitiID = 1 },
+                new Lendet { Lid = 106, Lname = "Gjuhe gjermane", DepartamentId = 10, VitiID = 1 },
+                new Lendet { Lid = 107, Lname = "Praktikum në matematikë", DepartamentId = 10, VitiID = 1 },
+                new Lendet { Lid = 108, Lname = "Kalkulus 2", DepartamentId = 10, VitiID = 1 },
+                new Lendet { Lid = 109, Lname = "Fizika 2", DepartamentId = 10, VitiID = 1 },
+                new Lendet { Lid = 110, Lname = "Bazat e inxhinierisë elektrike 2", DepartamentId = 10, VitiID = 1 },
+                new Lendet { Lid = 111, Lname = "Algoritmet dhe strukturat e të dhënave", DepartamentId = 10, VitiID = 1 },
+                new Lendet { Lid = 112, Lname = "Qarqet digjitale", DepartamentId = 10, VitiID = 1 },
+                new Lendet { Lid = 113, Lname = "Matematika diskrete dhe probabiliteti", DepartamentId = 10, VitiID = 2 },
+                new Lendet { Lid = 114, Lname = "Bazat e të dhënave", DepartamentId = 10, VitiID = 2 },
+                new Lendet { Lid = 115, Lname = "Programimi i orientuar në objekte", DepartamentId = 10, VitiID = 2 },
+                new Lendet { Lid = 116, Lname = "Arkitektura e kompjuterëve", DepartamentId = 10, VitiID = 2 },
+                new Lendet { Lid = 117, Lname = "Elektronika", DepartamentId = 10, VitiID = 2 },
+                new Lendet { Lid = 118, Lname = "Programimi në ueb I", DepartamentId = 10, VitiID = 2 },
+                new Lendet { Lid = 119, Lname = "Sistemet operative", DepartamentId = 10, VitiID = 2 },
+                new Lendet { Lid = 120, Lname = "Inxhinieria softuerike", DepartamentId = 10, VitiID = 2 },
+                new Lendet { Lid = 121, Lname = "Siguria e të dhënave", DepartamentId = 10, VitiID = 2 },
+                new Lendet { Lid = 122, Lname = "Komunikimi njeri-kompjuter", DepartamentId = 10, VitiID = 2 },
+                new Lendet { Lid = 123, Lname = "Programimi në ueb II", DepartamentId = 10, VitiID = 2 },
+                new Lendet { Lid = 124, Lname = "Çeshtjet legale, etike dhe sociale ne TIK", DepartamentId = 10, VitiID = 2 },
+                new Lendet { Lid = 125, Lname = "Buxheti dhe analiza e shpenzimeve", DepartamentId = 10, VitiID = 2 },
+                new Lendet { Lid = 126, Lname = "Mikroprocesorët dhe mikrokontrollerët", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 127, Lname = "Dizajni dhe analiza e algoritmeve", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 128, Lname = "Rrjetat kompjuterike", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 129, Lname = "Programimi per pajisje mobile", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 130, Lname = "Inxhinierimi i të dhënave", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 131, Lname = "Siguria në kompjuter", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 132, Lname = "Testimi i softuerit", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 133, Lname = "Concurrent Computing", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 134, Lname = "Ndërmarresi dhe inovacion", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 135, Lname = "Menaxhimi i projekteve në TI", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 137, Lname = "Sistemet e shpërndara", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 138, Lname = "Gërmimi i të dhënave", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 139, Lname = "Siguria në internet", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 140, Lname = "Big data", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 141, Lname = "Nxjerrja e informatave", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 142, Lname = "Visual computing", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 143, Lname = "Cloud computing", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 144, Lname = "Parallel computing", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 145, Lname = "Komunikimi i të dhënave", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 146, Lname = "Biomedical Engineering", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 147, Lname = "Biometrics & Forensics", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 148, Lname = "Praktika profesionale", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 149, Lname = "Punimi i diplomës", DepartamentId = 10, VitiID = 3 },
+                new Lendet { Lid = 150, Lname = "Algjebra lineare dhe kalkulus 1", DepartamentId = 11, VitiID = 1 },
+                new Lendet { Lid = 151, Lname = "Fizika 1", DepartamentId = 11, VitiID = 1 },
+                new Lendet { Lid = 152, Lname = "Bazat e inxhinierisë elektrike 1", DepartamentId = 11, VitiID = 1 },
+                new Lendet { Lid = 153, Lname = "Bazat e Programimit", DepartamentId = 11, VitiID = 1 },
+                new Lendet { Lid = 154, Lname = "Anglishtja teknike", DepartamentId = 11, VitiID = 1 },
+                new Lendet { Lid = 155, Lname = "Shkathtësi komunikuese", DepartamentId = 11, VitiID = 1 },
+                new Lendet { Lid = 156, Lname = "Gjuhe gjermane", DepartamentId = 11, VitiID = 1 },
+                new Lendet { Lid = 157, Lname = "Praktikum në matematikë", DepartamentId = 11, VitiID = 1 },
+                new Lendet { Lid = 158, Lname = "Kalkulus 2", DepartamentId = 11, VitiID = 1 },
+                new Lendet { Lid = 159, Lname = "Fizika 2", DepartamentId = 11, VitiID = 1 },
+                new Lendet { Lid = 160, Lname = "Bazat e inxhinierisë elektrike 2", DepartamentId = 11, VitiID = 1 },
+                new Lendet { Lid = 161, Lname = "Algoritmet dhe strukturat e të dhënave", DepartamentId = 11, VitiID = 1 },
+                new Lendet { Lid = 162, Lname = "Qarqet digjitale", DepartamentId = 11, VitiID = 1 },
+                new Lendet { Lid = 163, Lname = "Mikroprocesorët dhe mikrokontrollerët", DepartamentId = 11, VitiID = 2 },
+                new Lendet { Lid = 164, Lname = "Kalkulus 3E", DepartamentId = 11, VitiID = 2 },
+                new Lendet { Lid = 165, Lname = "Sinjale dhe sisteme", DepartamentId = 11, VitiID = 2 },
+                new Lendet { Lid = 166, Lname = "Automatika", DepartamentId = 11, VitiID = 2 },
+                new Lendet { Lid = 167, Lname = "Elektronika", DepartamentId = 11, VitiID = 2 },
+                new Lendet { Lid = 168, Lname = "Matjet elektronike", DepartamentId = 11, VitiID = 2 },
+                new Lendet { Lid = 169, Lname = "Interneti i gjërave", DepartamentId = 11, VitiID = 2 },
+                new Lendet { Lid = 170, Lname = "Elektroenergjetika", DepartamentId = 11, VitiID = 2 },
+                new Lendet { Lid = 171, Lname = "Fushat dhe valët elektromagnetike", DepartamentId = 11, VitiID = 2 },
+                new Lendet { Lid = 172, Lname = "Sinjalet diskrete dhe pёrpunimi digjital", DepartamentId = 11, VitiID = 2 },
+                new Lendet { Lid = 173, Lname = "Arkitektura e kompjuterёve", DepartamentId = 11, VitiID = 2 },
+                new Lendet { Lid = 174, Lname = "Inovacioni dhe biznesi", DepartamentId = 11, VitiID = 2 },
+                new Lendet { Lid = 175, Lname = "Menaxhimi i projekteve", DepartamentId = 11, VitiID = 2 },
+                new Lendet { Lid = 176, Lname = "Komponentët elektronike", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 177, Lname = "Elektronika digjitale", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 178, Lname = "Elektronika energjetike", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 179, Lname = "Optoelektronika", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 180, Lname = "Sensorët dhe aktuatorët", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 181, Lname = "Komunikimet elektronike", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 182, Lname = "Instrumentacioni matës dhe DAQ", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 183, Lname = "Bazat e mekatronikës", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 184, Lname = "Sinjalet biomedicinale", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 185, Lname = "Ndёrmarrёsia", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 186, Lname = "Mikroekonomia", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 187, Lname = "Mikroelektronika", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 188, Lname = "Elektronika analoge", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 189, Lname = "Bazat e multimedias", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 190, Lname = "Bazat e robotikës", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 191, Lname = "Teknologjia e komunikimeve optike", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 192, Lname = "Sistemet e ndërthurura ", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 193, Lname = "Projektimi i sistemeve elektronike me", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 194, Lname = "Instrumentacioni biomedicinale", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 195, Lname = "Praktika profesionale", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 196, Lname = "Tema e diplomës bachelor", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 197, Lname = "Sistemet e rregullimit automatik", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 198, Lname = "Bazat e robotikës", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 199, Lname = "Dirigjuesit e programueshëm logjik ", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 200, Lname = "Aktuatorët e mençur dhe ngasjet", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 201, Lname = "Sensorët e mençur", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 202, Lname = "Komunikimet në automatikë", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 203, Lname = "Metodat e elementeve tё fundme", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 204, Lname = "Sistemet operative", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 205, Lname = "Modelimi dhe simulimi", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 206, Lname = "Sistemet digjitale tё rregullimit", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 207, Lname = "Sistemet jolineare të rregullimit", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 208, Lname = "Rregullimi i proceseve kimike", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 209, Lname = "Proceset e vazhduara dhe grupore", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 210, Lname = "Rregullimi në kohë reale", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 211, Lname = "Grumbullimi kompjuterik i të dhënave", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 212, Lname = "Automatizimi i objekteve të banimit", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 213, Lname = "Praktika profesionale", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 214, Lname = "Tema e diplomës bachelor", DepartamentId = 11, VitiID = 3 },
+                new Lendet { Lid = 215, Lname = "Algjebra lineare dhe kalkulus 1", DepartamentId = 12, VitiID = 1 },
+                new Lendet { Lid = 216, Lname = "Fizika 1", DepartamentId = 12, VitiID = 1 },
+                new Lendet { Lid = 217, Lname = "Bazat e inxhinierisë elektrike 1 ", DepartamentId = 12, VitiID = 1 },
+                new Lendet { Lid = 218, Lname = "Bazat e Programimit", DepartamentId = 12, VitiID = 1 },
+                new Lendet { Lid = 219, Lname = "Anglishtja teknike", DepartamentId = 12, VitiID = 1 },
+                new Lendet { Lid = 210, Lname = "Shkathtësi komunikuese", DepartamentId = 12, VitiID = 1 },
+                new Lendet { Lid = 211, Lname = "Gjuhe gjermane", DepartamentId = 12, VitiID = 1 },
+                new Lendet { Lid = 212, Lname = "Praktikum në matematikë", DepartamentId = 12, VitiID = 1 },
+                new Lendet { Lid = 213, Lname = "Kalkulus 2", DepartamentId = 12, VitiID = 1 },
+                new Lendet { Lid = 214, Lname = "Fizika 2", DepartamentId = 12, VitiID = 1 },
+                new Lendet { Lid = 215, Lname = "Bazat e inxhinierisë elektrike 2", DepartamentId = 12, VitiID = 1 },
+                new Lendet { Lid = 216, Lname = "Algoritmet dhe strukturat e të dhënave", DepartamentId = 12, VitiID = 1 },
+                new Lendet { Lid = 217, Lname = "Qarqet digjitale", DepartamentId = 12, VitiID = 1 },
+                new Lendet { Lid = 218, Lname = "Kalkulus 3 dhe probabilitet", DepartamentId = 12, VitiID = 2 },
+                new Lendet { Lid = 219, Lname = "Sinjalet dhe Informacionet", DepartamentId = 12, VitiID = 2 },
+                new Lendet { Lid = 220, Lname = "Elektronikë", DepartamentId = 12, VitiID = 2 },
+                new Lendet { Lid = 221, Lname = "Teknologjitë e Internetit", DepartamentId = 12, VitiID = 2 },
+                new Lendet { Lid = 222, Lname = "Praktikum në Matlab", DepartamentId = 12, VitiID = 2 },
+                new Lendet { Lid = 223, Lname = "Praktikum në Labview", DepartamentId = 12, VitiID = 2 },
+                new Lendet { Lid = 224, Lname = "Komunikimet digjitale", DepartamentId = 12, VitiID = 2 },
+                new Lendet { Lid = 225, Lname = "Valët elektromagnetike", DepartamentId = 12, VitiID = 2 },
+                new Lendet { Lid = 226, Lname = "Transmetimi i të dhënave", DepartamentId = 12, VitiID = 2 },
+                new Lendet { Lid = 227, Lname = "Menaxhimi i projekteve ne TIK", DepartamentId = 12, VitiID = 2 },
+                new Lendet { Lid = 228, Lname = "Ekonomia per Inxhinieri", DepartamentId = 12, VitiID = 2 },
+                new Lendet { Lid = 229, Lname = "Arkitektura e kompjutereve dhe pajisjeve", DepartamentId = 12, VitiID = 2 },
+                new Lendet { Lid = 230, Lname = "Zhvillimi i aplikacioneve ne C++", DepartamentId = 12, VitiID = 2 },
+                new Lendet { Lid = 231, Lname = "Zhvillimi i Web aplikacioneve/www", DepartamentId = 12, VitiID = 2 },
+                new Lendet { Lid = 232, Lname = "Rrjetet komunikuese I", DepartamentId = 12, VitiID = 3 },
+                new Lendet { Lid = 233, Lname = "Sistemet operative për TIK", DepartamentId = 12, VitiID = 3 },
+                new Lendet { Lid = 234, Lname = "Programimi i orientuar ne objekte", DepartamentId = 12, VitiID = 3 },
+                new Lendet { Lid = 235, Lname = "Teknologjitë dhe sistemet multimediale", DepartamentId = 12, VitiID = 3 },
+                new Lendet { Lid = 236, Lname = "Python", DepartamentId = 12, VitiID = 3 },
+                new Lendet { Lid = 237, Lname = "Zhvillimi aplikacioneve per Android dhe IOS", DepartamentId = 12, VitiID = 3 },
+                new Lendet { Lid = 238, Lname = "Zhvillim i lojerave kompjuterike", DepartamentId = 12, VitiID = 3 },
+                new Lendet { Lid = 239, Lname = "Praktikum në Matlab", DepartamentId = 12, VitiID = 3 },
+                new Lendet { Lid = 240, Lname = "Praktikum në Labview", DepartamentId = 12, VitiID = 3 },
+                new Lendet { Lid = 241, Lname = "Inxhinieria e RF dhe Mikrovalëve", DepartamentId = 12, VitiID = 3 },
+                new Lendet { Lid = 242, Lname = "Komunikimet mobile", DepartamentId = 12, VitiID = 3 },
+                new Lendet { Lid = 243, Lname = "Programimi i distribuar", DepartamentId = 12, VitiID = 3 },
+                new Lendet { Lid = 244, Lname = "Rrjetet komunikuese II", DepartamentId = 12, VitiID = 3 },
+                new Lendet { Lid = 245, Lname = "Projekti përfundimtar (Praktika profesionale dhe prezantimi)", DepartamentId = 12, VitiID = 3 },
+                new Lendet { Lid = 246, Lname = "Komunikimet optike", DepartamentId = 12, VitiID = 3 },
+                new Lendet { Lid = 247, Lname = "Bioelektromagnetika", DepartamentId = 12, VitiID = 3 },
+                new Lendet { Lid = 248, Lname = "Protokolet komunikuese", DepartamentId = 12, VitiID = 3 },
+                new Lendet { Lid = 249, Lname = "Animimi dhe VR", DepartamentId = 12, VitiID = 3 }
                 );
 
             modelBuilder.Entity<Departament>().HasData(
@@ -30,44 +190,11 @@ namespace Consult.DataAcess.Data
             new Departament { Id = 12, Name = "Teknologjite e Informacionit dhe Komunikimit"},
             new Departament { Id = 13, Name = "Elektroenergjetike" }
             );
-            modelBuilder.Entity<Konsultimet>().HasData(
-               new Konsultimet
-               {
-                   Kid = 1,
-                   Ktitle = "Konsultimi 1",
-                   KkohaEFillimit = new DateTime(2023, 06, 08, 16, 00, 00),
-                   KkohaEMbarimit = new DateTime(2023, 06, 08, 16, 30, 00),
-                   Kpershkrimi = "Konsultime nga lenda e Fizikës",
-                   KLid = 100
-               },
-               new Konsultimet
-               {
-                   Kid = 2,
-                   Ktitle = "Konsultimi 2",
-                   KkohaEFillimit = new DateTime(2023, 06, 08, 17, 00, 00),
-                   KkohaEMbarimit = new DateTime(2023, 06, 08, 17, 30, 00),
-                   Kpershkrimi = "Konsultime nga lenda e Siguris",
-                   KLid = 100
-               },
-               new Konsultimet
-               {
-                   Kid = 3,
-                   Ktitle = "Konsultimi 3",
-                   KkohaEFillimit = new DateTime(2023, 06, 09, 16, 00, 00),
-                   KkohaEMbarimit = new DateTime(2023, 06, 09, 16, 30, 00),
-                   Kpershkrimi = "Konsultime nga lenda e Matematikes",
-                   KLid = 103
-               },
-               new Konsultimet
-               {
-                   Kid = 4,
-                   Ktitle = "Konsultimi 4",
-                   KkohaEFillimit = new DateTime(2023, 06, 10, 16, 00, 00),
-                   KkohaEMbarimit = new DateTime(2023, 06, 10, 16, 30, 00),
-                   Kpershkrimi = "Konsultime nga lenda e Sinjaleve",
-                   KLid = 103
-               }
-               );
+            modelBuilder.Entity<Viti>().HasData(
+            new Viti { Vid = 1 },
+            new Viti { Vid = 2 },
+            new Viti { Vid = 3 }
+            );
         }
     }
 }
