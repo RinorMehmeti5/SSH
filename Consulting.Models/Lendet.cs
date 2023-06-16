@@ -13,8 +13,8 @@ namespace Consult.Models
         [DisplayName("Emri i lendes")]
         [MaxLength(40)]
         public string? Lname { get; set; }
-        public string UserId { get; set; }
-        [ForeignKey("Id")]
+        public string? UserId { get; set; }
+        [ForeignKey("UserId")]
         [ValidateNever]
         public ApplicationUser? User { get; set; }
 
@@ -23,7 +23,7 @@ namespace Consult.Models
         [ValidateNever]
         public Departament? Departament { get; set; }
         public int? VitiID { get; set; }
-        [ForeignKey("Id")]
+        [ForeignKey("VitiID")]
         [ValidateNever]
         public Viti? Viti { get; set; }
     }

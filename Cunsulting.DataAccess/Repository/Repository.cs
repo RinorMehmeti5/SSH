@@ -19,7 +19,7 @@ namespace Cunsult.DataAcess.Repository
             _db = db;
             this.dbSet = _db.Set<T>();
             //_db.Lendet == dbSet
-            _db.Konsultimet.Include(u => u.Lid);
+            _db.Konsultimet.Include(u => u.Lendet);
         }
         public void Add(T entity)
         {

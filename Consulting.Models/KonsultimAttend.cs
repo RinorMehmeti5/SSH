@@ -13,14 +13,11 @@ namespace Consult.Models
     {
         [Key]
         public int KAid { get; set; }
-        public int KonsultimId { get; set; }
-        [ForeignKey("KonsultimId")]
+
+        public int UKid { get; set; }
+        [ForeignKey("UKid")]
         [ValidateNever]
-        public Konsultimet Konsultimet { get; set; }
-        public string UserId { get; set; }
-        [ForeignKey("UserId")]
-        [ValidateNever]
-        public ApplicationUser User { get; set; }
+        public UserKonsultimet UserKonsultimet { get; set; }
 
         public bool Attending { get; set; }
     }

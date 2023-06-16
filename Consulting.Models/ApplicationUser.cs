@@ -25,7 +25,7 @@ namespace Consult.Models
         [ValidateNever]
         public Departament? Departament { get; set; }
         public int? VitiID { get; set; }
-        [ForeignKey("Id")]
+        [ForeignKey("VitiID")]
         [ValidateNever]
         public Viti? Viti{ get; set; }
     }

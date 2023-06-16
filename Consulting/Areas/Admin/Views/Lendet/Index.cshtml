@@ -30,9 +30,6 @@
                     <th>
                         Emri i Lëndës
                     </th>
-                    <th>
-                        Përshkrimi i lëndës
-                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -41,7 +38,6 @@
                 {
                     <tr>
                         <td>@obj.Lname</td>
-                        <td>@obj.Ldescription</td>
                         <td>
                             <div class="w-75 btn btn-group" role="group">
                                 <a asp-controller="Lendet" asp-action="Edit" asp-route-id="@obj.Lid" class="btn btn-primary mx-2">

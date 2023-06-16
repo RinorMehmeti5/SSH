@@ -22,7 +22,7 @@ namespace Cunsult.DataAcess.Repository
 
         public void Update(Departament obj)
         {
-            _db.Departamentet.Update(obj);
+            _db.Departament.Update(obj);
         }
     }
 }
