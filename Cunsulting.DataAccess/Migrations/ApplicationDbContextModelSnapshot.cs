@@ -72,7 +72,7 @@ namespace Cunsult.DataAcess.Migrations
                     b.Property<bool>("Attending")
                         .HasColumnType("bit");
 
-                    b.Property<int>("KonsultimId")
+                    b.Property<int>("Kid")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
@@ -81,7 +81,7 @@ namespace Cunsult.DataAcess.Migrations
 
                     b.HasKey("KAid");
 
-                    b.HasIndex("KonsultimId");
+                    b.HasIndex("Kid");
 
                     b.HasIndex("UserId");
 
@@ -138,8 +138,8 @@ namespace Cunsult.DataAcess.Migrations
 
                     b.Property<string>("Lname")
                         .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -1630,6 +1630,10 @@ namespace Cunsult.DataAcess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Vid"));
 
+                    b.Property<string>("VitiName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Vid");
 
                     b.ToTable("Viti");
@@ -1637,15 +1641,18 @@ namespace Cunsult.DataAcess.Migrations
                     b.HasData(
                         new
                         {
-                            Vid = 1
+                            Vid = 1,
+                            VitiName = "Viti i parë"
                         },
                         new
                         {
-                            Vid = 2
+                            Vid = 2,
+                            VitiName = "Viti i dytë"
                         },
                         new
                         {
-                            Vid = 3
+                            Vid = 3,
+                            VitiName = "Viti i tretë"
                         });
                 });
 
@@ -1897,15 +1904,15 @@ namespace Cunsult.DataAcess.Migrations
             modelBuilder.Entity("Consult.Models.KonsultimAttend", b =>
                 {
                     b.HasOne("Consult.Models.Konsultimet", "Konsultimet")
-                        .WithMany()
-                        .HasForeignKey("KonsultimId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithMany("KonsultimetAttendees")
+                        .HasForeignKey("Kid")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Consult.Models.ApplicationUser", "User")
-                        .WithMany()
+                        .WithMany("KonsultimetAttendees")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Konsultimet");
@@ -2019,6 +2026,16 @@ namespace Cunsult.DataAcess.Migrations
                     b.Navigation("Departament");
 
                     b.Navigation("Viti");
+                });
+
+            modelBuilder.Entity("Consult.Models.Konsultimet", b =>
+                {
+                    b.Navigation("KonsultimetAttendees");
+                });
+
+            modelBuilder.Entity("Consult.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("KonsultimetAttendees");
                 });
 #pragma warning restore 612, 618
         }

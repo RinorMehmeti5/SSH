@@ -21,12 +21,13 @@ namespace Consult.Models
         public string? Country { get; set; }
         public string? FKID { get; set; }
         public int? DepartamentID { get; set; }
-        [ForeignKey("Id")]
+        [ForeignKey("DepartamentID")]
         [ValidateNever]
         public Departament? Departament { get; set; }
         public int? VitiID { get; set; }
         [ForeignKey("VitiID")]
         [ValidateNever]
         public Viti? Viti{ get; set; }
+        public virtual ICollection<KonsultimAttend> KonsultimetAttendees { get; set; }
     }
 }

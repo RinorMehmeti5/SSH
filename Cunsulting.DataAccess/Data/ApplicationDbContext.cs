@@ -21,6 +21,17 @@ namespace Consult.DataAcess.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<KonsultimAttend>()
+                .HasOne(ka => ka.Konsultimet)
+                .WithMany(k => k.KonsultimetAttendees)
+            .OnDelete(DeleteBehavior.Restrict); // Prevent cascade delete
+
+            modelBuilder.Entity<KonsultimAttend>()
+                .HasOne(ka => ka.User)
+                .WithMany(u => u.KonsultimetAttendees)
+                .OnDelete(DeleteBehavior.Restrict); // Prevent cascade delete
+
             modelBuilder.Entity<Departament>().HasData(
             new Departament { Id = 10, Name = "Inxhinieri Kompjuterike dhe Softuerike" },
             new Departament { Id = 11, Name = "Elektronikë, Automatikë dhe Robotikë" },
@@ -28,13 +39,13 @@ namespace Consult.DataAcess.Data
             new Departament { Id = 13, Name = "Elektroenergjetike" }
             );
             modelBuilder.Entity<Viti>().HasData(
-            new Viti { Vid = 1 },
-            new Viti { Vid = 2 },
-            new Viti { Vid = 3 }
+            new Viti { Vid = 1 , VitiName="Viti i parë"},
+            new Viti { Vid = 2 , VitiName = "Viti i dytë" },
+            new Viti { Vid = 3 , VitiName = "Viti i tretë" }
             );
             modelBuilder.Entity<Lendet>().HasData(
             new Lendet { Lid = 100, Lname = "Algjebra lineare dhe kalkulus 1", DepartamentId = 10, VitiID = 1 },
-            new Lendet { Lid = 101, Lname = "Fizika 1", DepartamentId = 10 },
+            new Lendet { Lid = 101, Lname = "Fizika 1", DepartamentId = 10, VitiID = 1 },
             new Lendet { Lid = 102, Lname = "Bazat e inxhinierise elektrike 1", DepartamentId = 10, VitiID = 1 },
             new Lendet { Lid = 103, Lname = "Bazat e Programimit", DepartamentId = 10, VitiID = 1 },
             new Lendet { Lid = 104, Lname = "Anglishtja teknike", DepartamentId = 10, VitiID = 1 },

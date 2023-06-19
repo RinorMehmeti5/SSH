@@ -11,5 +11,6 @@ namespace Consult.Models
     {
         [Key]
         public int Vid { get; set; }
+        public string VitiName { get; set; }
     }
 }

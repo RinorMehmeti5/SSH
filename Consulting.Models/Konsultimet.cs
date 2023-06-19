@@ -39,5 +39,6 @@ namespace Consult.Models
         [ForeignKey("UserId")]
         [ValidateNever]
         public ApplicationUser? User{ get; set; }
+        public virtual ICollection<KonsultimAttend> KonsultimetAttendees { get; set; }
     }
 }
