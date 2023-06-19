@@ -15,7 +15,7 @@ namespace Consult.Models
     public class Konsultimet
     {
         [Key]
-        public int Kid { get; set; }
+        public int? Kid { get; set; }
         [Required]
         [DisplayName("Titulli i Konsultimit")]
         public string? Ktitle { get; set; }
