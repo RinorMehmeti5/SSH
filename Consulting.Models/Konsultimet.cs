@@ -35,7 +35,7 @@ namespace Consult.Models
         [ForeignKey("KLid")]
         [ValidateNever]
         public Lendet Lendet { get; set; }
-        public string UserId { get; set; }
+        public string? UserId { get; set; }
         [ForeignKey("UserId")]
         [ValidateNever]
         public ApplicationUser? User{ get; set; }
