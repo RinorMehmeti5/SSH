@@ -11,7 +11,7 @@ namespace Consult.Models
         public int Lid { get; set; }
         [Required]
         [DisplayName("Emri i lendes")]
-        [MaxLength(100)]
+        [MaxLength(200)]
         public string? Lname { get; set; }
         public string? UserId { get; set; }
         [ForeignKey("UserId")]

@@ -23,7 +23,7 @@ namespace Consulting.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            List<Konsultimet> KonsultimetList = _unitOfWork.Konsultimet.GetAll(includeProperties:"Lid").ToList();
+            List<Konsultimet> KonsultimetList = _unitOfWork.Konsultimet.GetAll(includeProperties:"Lendet").ToList();
             return View(KonsultimetList);
         }
         
@@ -76,7 +76,7 @@ namespace Consulting.Areas.Admin.Controllers
         #region API Calls
         [HttpGet]
         public IActionResult GetAll() {
-            List<Konsultimet> KonsultimetList = _unitOfWork.Konsultimet.GetAll(includeProperties: "Lid").ToList();
+            List<Konsultimet> KonsultimetList = _unitOfWork.Konsultimet.GetAll(includeProperties: "Lendet").ToList();
             return Json(new {data =  KonsultimetList});
         }
 

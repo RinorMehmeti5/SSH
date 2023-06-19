@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cunsult.DataAcess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230619091258_FillDatabase1")]
-    partial class FillDatabase1
+    [Migration("20230619134306_FillDatabase")]
+    partial class FillDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -141,8 +141,8 @@ namespace Cunsult.DataAcess.Migrations
 
                     b.Property<string>("Lname")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -163,1462 +163,1463 @@ namespace Cunsult.DataAcess.Migrations
                     b.HasData(
                         new
                         {
-                            Lid = 100,
+                            Lid = 1,
                             DepartamentId = 10,
                             Lname = "Algjebra lineare dhe kalkulus 1",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 101,
+                            Lid = 2,
                             DepartamentId = 10,
-                            Lname = "Fizika 1"
+                            Lname = "Fizika 1",
+                            VitiID = 1
                         },
                         new
                         {
-                            Lid = 102,
+                            Lid = 3,
                             DepartamentId = 10,
                             Lname = "Bazat e inxhinierise elektrike 1",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 103,
+                            Lid = 4,
                             DepartamentId = 10,
                             Lname = "Bazat e Programimit",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 104,
+                            Lid = 5,
                             DepartamentId = 10,
                             Lname = "Anglishtja teknike",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 105,
+                            Lid = 6,
                             DepartamentId = 10,
                             Lname = "Shkathtësi komunikuese",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 106,
+                            Lid = 7,
                             DepartamentId = 10,
                             Lname = "Gjuhe gjermane",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 107,
+                            Lid = 8,
                             DepartamentId = 10,
                             Lname = "Praktikum në matematikë",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 108,
+                            Lid = 9,
                             DepartamentId = 10,
                             Lname = "Kalkulus 2",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 109,
+                            Lid = 10,
                             DepartamentId = 10,
                             Lname = "Fizika 2",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 110,
+                            Lid = 11,
                             DepartamentId = 10,
                             Lname = "Bazat e inxhinierisë elektrike 2",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 111,
+                            Lid = 12,
                             DepartamentId = 10,
                             Lname = "Algoritmet dhe strukturat e të dhënave",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 112,
+                            Lid = 13,
                             DepartamentId = 10,
                             Lname = "Qarqet digjitale",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 113,
+                            Lid = 14,
                             DepartamentId = 10,
                             Lname = "Matematika diskrete dhe probabiliteti",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 114,
+                            Lid = 15,
                             DepartamentId = 10,
                             Lname = "Bazat e të dhënave",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 115,
+                            Lid = 16,
                             DepartamentId = 10,
                             Lname = "Programimi i orientuar në objekte",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 116,
+                            Lid = 17,
                             DepartamentId = 10,
                             Lname = "Arkitektura e kompjuterëve",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 117,
+                            Lid = 18,
                             DepartamentId = 10,
                             Lname = "Elektronika",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 118,
+                            Lid = 19,
                             DepartamentId = 10,
                             Lname = "Programimi në ueb I",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 119,
+                            Lid = 20,
                             DepartamentId = 10,
                             Lname = "Sistemet operative",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 120,
+                            Lid = 21,
                             DepartamentId = 10,
                             Lname = "Inxhinieria softuerike",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 121,
+                            Lid = 22,
                             DepartamentId = 10,
                             Lname = "Siguria e të dhënave",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 122,
+                            Lid = 23,
                             DepartamentId = 10,
                             Lname = "Komunikimi njeri-kompjuter",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 123,
+                            Lid = 24,
                             DepartamentId = 10,
                             Lname = "Programimi në ueb II",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 124,
+                            Lid = 25,
                             DepartamentId = 10,
                             Lname = "Çeshtjet legale, etike dhe sociale ne TIK",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 125,
+                            Lid = 26,
                             DepartamentId = 10,
                             Lname = "Buxheti dhe analiza e shpenzimeve",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 126,
+                            Lid = 27,
                             DepartamentId = 10,
                             Lname = "Mikroprocesorët dhe mikrokontrollerët",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 127,
+                            Lid = 28,
                             DepartamentId = 10,
                             Lname = "Dizajni dhe analiza e algoritmeve",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 128,
+                            Lid = 29,
                             DepartamentId = 10,
                             Lname = "Rrjetat kompjuterike",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 129,
+                            Lid = 30,
                             DepartamentId = 10,
                             Lname = "Programimi per pajisje mobile",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 130,
+                            Lid = 31,
                             DepartamentId = 10,
                             Lname = "Inxhinierimi i të dhënave",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 131,
+                            Lid = 32,
                             DepartamentId = 10,
                             Lname = "Siguria në kompjuter",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 132,
+                            Lid = 33,
                             DepartamentId = 10,
                             Lname = "Testimi i softuerit",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 133,
+                            Lid = 34,
                             DepartamentId = 10,
                             Lname = "Concurrent Computing",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 134,
+                            Lid = 35,
                             DepartamentId = 10,
                             Lname = "Ndërmarresi dhe inovacion",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 135,
+                            Lid = 36,
                             DepartamentId = 10,
                             Lname = "Menaxhimi i projekteve në TI",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 137,
+                            Lid = 37,
                             DepartamentId = 10,
                             Lname = "Sistemet e shpërndara",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 138,
+                            Lid = 38,
                             DepartamentId = 10,
                             Lname = "Gërmimi i të dhënave",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 139,
+                            Lid = 39,
                             DepartamentId = 10,
                             Lname = "Siguria në internet",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 140,
+                            Lid = 40,
                             DepartamentId = 10,
                             Lname = "Big data",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 141,
+                            Lid = 41,
                             DepartamentId = 10,
                             Lname = "Nxjerrja e informatave",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 142,
+                            Lid = 42,
                             DepartamentId = 10,
                             Lname = "Visual computing",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 143,
+                            Lid = 43,
                             DepartamentId = 10,
                             Lname = "Cloud computing",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 144,
+                            Lid = 44,
                             DepartamentId = 10,
                             Lname = "Parallel computing",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 145,
+                            Lid = 45,
                             DepartamentId = 10,
                             Lname = "Komunikimi i të dhënave",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 146,
+                            Lid = 46,
                             DepartamentId = 10,
                             Lname = "Biomedical Engineering",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 147,
+                            Lid = 47,
                             DepartamentId = 10,
                             Lname = "Biometrics & Forensics",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 148,
+                            Lid = 48,
                             DepartamentId = 10,
                             Lname = "Praktika profesionale",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 149,
+                            Lid = 49,
                             DepartamentId = 10,
                             Lname = "Punimi i diplomës",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 150,
+                            Lid = 50,
                             DepartamentId = 11,
                             Lname = "Algjebra lineare dhe kalkulus 1",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 151,
+                            Lid = 51,
                             DepartamentId = 11,
                             Lname = "Fizika 1",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 152,
+                            Lid = 52,
                             DepartamentId = 11,
                             Lname = "Bazat e inxhinierisë elektrike 1",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 153,
+                            Lid = 53,
                             DepartamentId = 11,
                             Lname = "Bazat e Programimit",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 154,
+                            Lid = 54,
                             DepartamentId = 11,
                             Lname = "Anglishtja teknike",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 155,
+                            Lid = 55,
                             DepartamentId = 11,
                             Lname = "Shkathtësi komunikuese",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 156,
+                            Lid = 56,
                             DepartamentId = 11,
                             Lname = "Gjuhe gjermane",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 157,
+                            Lid = 57,
                             DepartamentId = 11,
                             Lname = "Praktikum në matematikë",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 158,
+                            Lid = 58,
                             DepartamentId = 11,
                             Lname = "Kalkulus 2",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 159,
+                            Lid = 59,
                             DepartamentId = 11,
                             Lname = "Fizika 2",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 160,
+                            Lid = 60,
                             DepartamentId = 11,
                             Lname = "Bazat e inxhinierisë elektrike 2",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 161,
+                            Lid = 61,
                             DepartamentId = 11,
                             Lname = "Algoritmet dhe strukturat e të dhënave",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 162,
+                            Lid = 62,
                             DepartamentId = 11,
                             Lname = "Qarqet digjitale",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 163,
+                            Lid = 63,
                             DepartamentId = 11,
                             Lname = "Mikroprocesorët dhe mikrokontrollerët",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 164,
+                            Lid = 64,
                             DepartamentId = 11,
                             Lname = "Kalkulus 3E",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 165,
+                            Lid = 65,
                             DepartamentId = 11,
                             Lname = "Sinjale dhe sisteme",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 166,
+                            Lid = 66,
                             DepartamentId = 11,
                             Lname = "Automatika",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 167,
+                            Lid = 67,
                             DepartamentId = 11,
                             Lname = "Elektronika",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 168,
+                            Lid = 68,
                             DepartamentId = 11,
                             Lname = "Matjet elektronike",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 169,
+                            Lid = 69,
                             DepartamentId = 11,
                             Lname = "Interneti i gjërave",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 170,
+                            Lid = 70,
                             DepartamentId = 11,
                             Lname = "Elektroenergjetika",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 171,
+                            Lid = 71,
                             DepartamentId = 11,
                             Lname = "Fushat dhe valët elektromagnetike",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 172,
+                            Lid = 72,
                             DepartamentId = 11,
                             Lname = "Sinjalet diskrete dhe pёrpunimi digjital",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 173,
+                            Lid = 73,
                             DepartamentId = 11,
                             Lname = "Arkitektura e kompjuterёve",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 174,
+                            Lid = 74,
                             DepartamentId = 11,
                             Lname = "Inovacioni dhe biznesi",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 175,
+                            Lid = 75,
                             DepartamentId = 11,
                             Lname = "Menaxhimi i projekteve",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 176,
+                            Lid = 76,
                             DepartamentId = 11,
                             Lname = "Komponentët elektronike",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 177,
+                            Lid = 77,
                             DepartamentId = 11,
                             Lname = "Elektronika digjitale",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 178,
+                            Lid = 78,
                             DepartamentId = 11,
                             Lname = "Elektronika energjetike",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 179,
+                            Lid = 79,
                             DepartamentId = 11,
                             Lname = "Optoelektronika",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 180,
+                            Lid = 80,
                             DepartamentId = 11,
                             Lname = "Sensorët dhe aktuatorët",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 181,
+                            Lid = 81,
                             DepartamentId = 11,
                             Lname = "Komunikimet elektronike",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 182,
+                            Lid = 82,
                             DepartamentId = 11,
                             Lname = "Instrumentacioni matës dhe DAQ",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 183,
+                            Lid = 83,
                             DepartamentId = 11,
                             Lname = "Bazat e mekatronikës",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 184,
+                            Lid = 84,
                             DepartamentId = 11,
                             Lname = "Sinjalet biomedicinale",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 185,
+                            Lid = 85,
                             DepartamentId = 11,
                             Lname = "Ndёrmarrёsia",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 186,
+                            Lid = 86,
                             DepartamentId = 11,
                             Lname = "Mikroekonomia",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 187,
+                            Lid = 87,
                             DepartamentId = 11,
                             Lname = "Mikroelektronika",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 188,
+                            Lid = 88,
                             DepartamentId = 11,
                             Lname = "Elektronika analoge",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 189,
+                            Lid = 89,
                             DepartamentId = 11,
                             Lname = "Bazat e multimedias",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 190,
+                            Lid = 90,
                             DepartamentId = 11,
                             Lname = "Bazat e robotikës",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 191,
+                            Lid = 91,
                             DepartamentId = 11,
                             Lname = "Teknologjia e komunikimeve optike",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 192,
+                            Lid = 92,
                             DepartamentId = 11,
                             Lname = "Sistemet e ndërthurura ",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 193,
+                            Lid = 93,
                             DepartamentId = 11,
                             Lname = "Projektimi i sistemeve elektronike me",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 194,
+                            Lid = 94,
                             DepartamentId = 11,
                             Lname = "Instrumentacioni biomedicinale",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 195,
+                            Lid = 95,
                             DepartamentId = 11,
                             Lname = "Praktika profesionale",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 196,
+                            Lid = 96,
                             DepartamentId = 11,
                             Lname = "Tema e diplomës bachelor",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 197,
+                            Lid = 97,
                             DepartamentId = 11,
                             Lname = "Sistemet e rregullimit automatik",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 198,
+                            Lid = 98,
                             DepartamentId = 11,
                             Lname = "Bazat e robotikës",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 199,
+                            Lid = 99,
                             DepartamentId = 11,
                             Lname = "Dirigjuesit e programueshëm logjik ",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 200,
+                            Lid = 100,
                             DepartamentId = 11,
                             Lname = "Aktuatorët e mençur dhe ngasjet",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 201,
+                            Lid = 101,
                             DepartamentId = 11,
                             Lname = "Sensorët e mençur",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 202,
+                            Lid = 102,
                             DepartamentId = 11,
                             Lname = "Komunikimet në automatikë",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 203,
+                            Lid = 103,
                             DepartamentId = 11,
                             Lname = "Metodat e elementeve tё fundme",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 204,
+                            Lid = 104,
                             DepartamentId = 11,
                             Lname = "Sistemet operative",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 205,
+                            Lid = 105,
                             DepartamentId = 11,
                             Lname = "Modelimi dhe simulimi",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 206,
+                            Lid = 106,
                             DepartamentId = 11,
                             Lname = "Sistemet digjitale tё rregullimit",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 207,
+                            Lid = 107,
                             DepartamentId = 11,
                             Lname = "Sistemet jolineare të rregullimit",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 208,
+                            Lid = 108,
                             DepartamentId = 11,
                             Lname = "Rregullimi i proceseve kimike",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 209,
+                            Lid = 109,
                             DepartamentId = 11,
                             Lname = "Proceset e vazhduara dhe grupore",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 210,
+                            Lid = 110,
                             DepartamentId = 11,
                             Lname = "Rregullimi në kohë reale",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 211,
+                            Lid = 111,
                             DepartamentId = 11,
                             Lname = "Grumbullimi kompjuterik i të dhënave",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 212,
+                            Lid = 112,
                             DepartamentId = 11,
                             Lname = "Automatizimi i objekteve të banimit",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 213,
+                            Lid = 113,
                             DepartamentId = 11,
                             Lname = "Praktika profesionale",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 214,
+                            Lid = 114,
                             DepartamentId = 11,
                             Lname = "Tema e diplomës bachelor",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 215,
+                            Lid = 115,
                             DepartamentId = 12,
                             Lname = "Algjebra lineare dhe kalkulus 1",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 216,
+                            Lid = 116,
                             DepartamentId = 12,
                             Lname = "Fizika 1",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 217,
+                            Lid = 117,
                             DepartamentId = 12,
                             Lname = "Bazat e inxhinierisë elektrike 1 ",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 218,
+                            Lid = 118,
                             DepartamentId = 12,
                             Lname = "Bazat e Programimit",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 219,
+                            Lid = 119,
                             DepartamentId = 12,
                             Lname = "Anglishtja teknike",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 220,
+                            Lid = 120,
                             DepartamentId = 12,
                             Lname = "Shkathtësi komunikuese",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 221,
+                            Lid = 121,
                             DepartamentId = 12,
                             Lname = "Gjuhe gjermane",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 222,
+                            Lid = 122,
                             DepartamentId = 12,
                             Lname = "Praktikum në matematikë",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 223,
+                            Lid = 123,
                             DepartamentId = 12,
                             Lname = "Kalkulus 2",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 224,
+                            Lid = 124,
                             DepartamentId = 12,
                             Lname = "Fizika 2",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 225,
+                            Lid = 125,
                             DepartamentId = 12,
                             Lname = "Bazat e inxhinierisë elektrike 2",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 226,
+                            Lid = 126,
                             DepartamentId = 12,
                             Lname = "Algoritmet dhe strukturat e të dhënave",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 227,
+                            Lid = 127,
                             DepartamentId = 12,
                             Lname = "Qarqet digjitale",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 228,
+                            Lid = 128,
                             DepartamentId = 12,
                             Lname = "Kalkulus 3 dhe probabilitet",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 229,
+                            Lid = 129,
                             DepartamentId = 12,
                             Lname = "Sinjalet dhe Informacionet",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 230,
+                            Lid = 130,
                             DepartamentId = 12,
                             Lname = "Elektronikë",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 231,
+                            Lid = 131,
                             DepartamentId = 12,
                             Lname = "Teknologjitë e Internetit",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 232,
+                            Lid = 132,
                             DepartamentId = 12,
                             Lname = "Praktikum në Matlab",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 233,
+                            Lid = 133,
                             DepartamentId = 12,
                             Lname = "Praktikum në Labview",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 234,
+                            Lid = 134,
                             DepartamentId = 12,
                             Lname = "Komunikimet digjitale",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 235,
+                            Lid = 135,
                             DepartamentId = 12,
                             Lname = "Valët elektromagnetike",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 236,
+                            Lid = 136,
                             DepartamentId = 12,
                             Lname = "Transmetimi i të dhënave",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 237,
+                            Lid = 137,
                             DepartamentId = 12,
                             Lname = "Menaxhimi i projekteve ne TIK",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 238,
+                            Lid = 138,
                             DepartamentId = 12,
                             Lname = "Ekonomia per Inxhinieri",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 239,
+                            Lid = 139,
                             DepartamentId = 12,
                             Lname = "Arkitektura e kompjutereve dhe pajisjeve",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 240,
+                            Lid = 140,
                             DepartamentId = 12,
                             Lname = "Zhvillimi i aplikacioneve ne C++",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 241,
+                            Lid = 141,
                             DepartamentId = 12,
                             Lname = "Zhvillimi i Web aplikacioneve/www",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 242,
+                            Lid = 142,
                             DepartamentId = 12,
                             Lname = "Rrjetet komunikuese I",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 243,
+                            Lid = 143,
                             DepartamentId = 12,
                             Lname = "Sistemet operative për TIK",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 244,
+                            Lid = 144,
                             DepartamentId = 12,
                             Lname = "Programimi i orientuar ne objekte",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 245,
+                            Lid = 145,
                             DepartamentId = 12,
                             Lname = "Teknologjitë dhe sistemet multimediale",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 246,
+                            Lid = 146,
                             DepartamentId = 12,
                             Lname = "Python",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 247,
+                            Lid = 147,
                             DepartamentId = 12,
                             Lname = "Zhvillimi aplikacioneve per Android dhe IOS",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 248,
+                            Lid = 148,
                             DepartamentId = 12,
                             Lname = "Zhvillim i lojerave kompjuterike",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 249,
+                            Lid = 149,
                             DepartamentId = 12,
                             Lname = "Praktikum në Matlab",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 250,
+                            Lid = 150,
                             DepartamentId = 12,
                             Lname = "Praktikum në Labview",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 251,
+                            Lid = 151,
                             DepartamentId = 12,
                             Lname = "Inxhinieria e RF dhe Mikrovalëve",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 252,
+                            Lid = 152,
                             DepartamentId = 12,
                             Lname = "Komunikimet mobile",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 253,
+                            Lid = 153,
                             DepartamentId = 12,
                             Lname = "Programimi i distribuar",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 254,
+                            Lid = 154,
                             DepartamentId = 12,
                             Lname = "Rrjetet komunikuese II",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 255,
+                            Lid = 155,
                             DepartamentId = 12,
                             Lname = "Projekti përfundimtar (Praktika profesionale dhe prezantimi)",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 256,
+                            Lid = 156,
                             DepartamentId = 12,
                             Lname = "Komunikimet optike",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 257,
+                            Lid = 157,
                             DepartamentId = 12,
                             Lname = "Bioelektromagnetika",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 258,
+                            Lid = 158,
                             DepartamentId = 12,
                             Lname = "Protokolet komunikuese",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 259,
+                            Lid = 159,
                             DepartamentId = 12,
                             Lname = "Animimi dhe VR",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 260,
+                            Lid = 160,
                             DepartamentId = 13,
                             Lname = "Algjebra lineare dhe kalkulus 1",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 261,
+                            Lid = 161,
                             DepartamentId = 13,
                             Lname = "Fizika 1",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 262,
+                            Lid = 162,
                             DepartamentId = 13,
                             Lname = "Bazat e inxhinierisë elektrike 1",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 263,
+                            Lid = 163,
                             DepartamentId = 13,
                             Lname = "Bazat e Programimit",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 264,
+                            Lid = 164,
                             DepartamentId = 13,
                             Lname = "Anglishtja teknike",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 265,
+                            Lid = 165,
                             DepartamentId = 13,
                             Lname = "Shkathtësi komunikuese",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 266,
+                            Lid = 166,
                             DepartamentId = 13,
                             Lname = "Gjuhe gjermane",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 267,
+                            Lid = 167,
                             DepartamentId = 13,
                             Lname = "Praktikum në matematikë",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 268,
+                            Lid = 168,
                             DepartamentId = 13,
                             Lname = "Kalkulus 2",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 269,
+                            Lid = 169,
                             DepartamentId = 13,
                             Lname = "Fizika 2",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 270,
+                            Lid = 170,
                             DepartamentId = 13,
                             Lname = "Bazat e inxhinierisë elektrike 2",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 271,
+                            Lid = 171,
                             DepartamentId = 13,
                             Lname = "Algoritmet dhe strukturat e të dhënave",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 272,
+                            Lid = 172,
                             DepartamentId = 13,
                             Lname = "Qarqet digjitale",
                             VitiID = 1
                         },
                         new
                         {
-                            Lid = 273,
+                            Lid = 173,
                             DepartamentId = 13,
                             Lname = "Kalkulus 3 dhe probabilitet",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 274,
+                            Lid = 174,
                             DepartamentId = 13,
                             Lname = "Materialet elektrike",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 275,
+                            Lid = 175,
                             DepartamentId = 13,
                             Lname = "Matjet Elektrike",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 276,
+                            Lid = 176,
                             DepartamentId = 13,
                             Lname = "Bazat e Elektroenergjetikës",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 277,
+                            Lid = 177,
                             DepartamentId = 13,
                             Lname = "Elektronika",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 278,
+                            Lid = 178,
                             DepartamentId = 13,
                             Lname = "Bazat e automatikës",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 279,
+                            Lid = 179,
                             DepartamentId = 13,
                             Lname = "Sinjalet dhe sistemet",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 280,
+                            Lid = 180,
                             DepartamentId = 13,
                             Lname = "Programimi i orientuar në objekte",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 281,
+                            Lid = 181,
                             DepartamentId = 13,
                             Lname = "Aplikacionet softwerike në elektroenergjetikë",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 282,
+                            Lid = 182,
                             DepartamentId = 13,
                             Lname = "Makinat elektrike dhe transformatorët",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 283,
+                            Lid = 183,
                             DepartamentId = 13,
                             Lname = "Energjia dhe mjedisi",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 284,
+                            Lid = 184,
                             DepartamentId = 13,
                             Lname = "Centralet elektrike",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 285,
+                            Lid = 185,
                             DepartamentId = 13,
                             Lname = "Fushat dhe valët elektromagnetike",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 286,
+                            Lid = 186,
                             DepartamentId = 13,
                             Lname = "Menaxhimi i energjisë dhe auditimi i efiçiencës",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 287,
+                            Lid = 187,
                             DepartamentId = 13,
                             Lname = "Instrumentacioni matës në elektroenergjetikë",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 288,
+                            Lid = 188,
                             DepartamentId = 13,
                             Lname = "Teknika e sigurimit në impiantet elektrike",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 289,
+                            Lid = 189,
                             DepartamentId = 13,
                             Lname = "Transmetimi i të dhënave",
                             VitiID = 2
                         },
                         new
                         {
-                            Lid = 290,
+                            Lid = 190,
                             DepartamentId = 13,
                             Lname = "Tregu i energjisë elektrike",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 291,
+                            Lid = 191,
                             DepartamentId = 13,
                             Lname = "Bartja dhe shpërndarja e energjisë elektrike",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 292,
+                            Lid = 192,
                             DepartamentId = 13,
                             Lname = "Stabilimentet elektroenergjetike",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 293,
+                            Lid = 193,
                             DepartamentId = 13,
                             Lname = "Instalimet elektrike dhe rrjetat e tensionit",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 294,
+                            Lid = 194,
                             DepartamentId = 13,
                             Lname = "Burimet e ripërtëritshme të energjisë",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 295,
+                            Lid = 195,
                             DepartamentId = 13,
                             Lname = "Energjia diellore dhe fotovoltaikët",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 296,
+                            Lid = 196,
                             DepartamentId = 13,
                             Lname = "Elektronika energjetike",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 297,
+                            Lid = 197,
                             DepartamentId = 13,
                             Lname = "Makinat elektrike speciale",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 298,
+                            Lid = 198,
                             DepartamentId = 13,
                             Lname = "Rrjetat elektrike të fuqisë",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 299,
+                            Lid = 199,
                             DepartamentId = 13,
                             Lname = "Energjia diellore dhe fotovoltaikët",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 300,
+                            Lid = 200,
                             DepartamentId = 13,
                             Lname = "Ngasjet elektrike",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 301,
+                            Lid = 201,
                             DepartamentId = 13,
                             Lname = "Mbrojtja e sistemeve elektroenergjetike",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 302,
+                            Lid = 202,
                             DepartamentId = 13,
                             Lname = "Praktika profesionale",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 303,
+                            Lid = 203,
                             DepartamentId = 13,
                             Lname = "Punimi i Diplomës",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 304,
+                            Lid = 204,
                             DepartamentId = 13,
                             Lname = "Kualiteti i fuqisë në sistemet elektroenergjetike",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 305,
+                            Lid = 205,
                             DepartamentId = 13,
                             Lname = "Energjia e erës",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 306,
+                            Lid = 206,
                             DepartamentId = 13,
                             Lname = "Bazat e rrjetave të mençura",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 307,
+                            Lid = 207,
                             DepartamentId = 13,
                             Lname = "Vlerësimi ekonomik i investimeve",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 308,
+                            Lid = 208,
                             DepartamentId = 13,
                             Lname = "Menaxhimi i projekteve dhe etika",
                             VitiID = 3
                         },
                         new
                         {
-                            Lid = 309,
+                            Lid = 209,
                             DepartamentId = 13,
                             Lname = "Ndërmarrësia",
                             VitiID = 3

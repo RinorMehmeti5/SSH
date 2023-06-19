@@ -20,13 +20,13 @@ namespace Consulting.Areas.Student.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Konsultimet> konsultimetList = _unitOfWork.Konsultimet.GetAll(includeProperties: "Lid");
+            IEnumerable<Konsultimet> konsultimetList = _unitOfWork.Konsultimet.GetAll(includeProperties: "Lendet");
             return View(konsultimetList);
         }
 
         public IActionResult Details(int id)
         {
-            Konsultimet konsultimet = _unitOfWork.Konsultimet.Get(u=>u.Kid==id, includeProperties: "Lid");
+            Konsultimet konsultimet = _unitOfWork.Konsultimet.Get(u=>u.Kid==id, includeProperties: "Lendet");
             return View(konsultimet);
         }
 
