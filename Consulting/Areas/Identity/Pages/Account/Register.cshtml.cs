@@ -123,6 +123,7 @@ namespace Consulting.Areas.Identity.Pages.Account
             public int? DepartamentID { get; set; }
             [ValidateNever]
             public IEnumerable<SelectListItem> DepartamentList { get; set; }
+            public IEnumerable<SelectListItem> VitiList { get; set; }
         }
 
 
@@ -146,6 +147,11 @@ namespace Consulting.Areas.Identity.Pages.Account
                 {
                     Text = i.Name,
                     Value = i.Id.ToString()
+                }),
+                VitiList = _unitOfWork.Viti.GetAll().Select(i => new SelectListItem
+                {
+                    Text = i.VitiName,
+                    Value = i.Vid.ToString()
                 })
             };
             ReturnUrl = returnUrl;

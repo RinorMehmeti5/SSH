@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Data;
+using System.Security.Claims;
 
 namespace Consulting.Areas.Admin.Controllers
 {
@@ -45,7 +46,7 @@ namespace Consulting.Areas.Admin.Controllers
                 return View(KunsultimetVM);
             } else{
                 //update
-                KunsultimetVM.Konsultimet = _unitOfWork.Konsultimet.Get(u=>u.Kid==id);
+                KunsultimetVM.Konsultimet = _unitOfWork.Konsultimet.Get(u => u.Kid == id);
                 return View(KunsultimetVM);
             }
         }
@@ -56,6 +57,7 @@ namespace Consulting.Areas.Admin.Controllers
             //{
             //    ModelState.AddModelError("Emri", "Emri i lendes dhe pershkrimi nuk mund te jene te njejta");
             //}
+            konsultimetVM.Konsultimet.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (ModelState.IsValid)
             {
                 if(konsultimetVM.Konsultimet.Kid == 0)

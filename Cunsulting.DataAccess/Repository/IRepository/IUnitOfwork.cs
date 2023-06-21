@@ -11,6 +11,7 @@ namespace Cunsult.DataAcess.Repository.IRepository
         ILendetRepository Lendet { get; }
         IKonsultimetRespository Konsultimet { get; }
         IDepartamentetRespository Departamentet{ get; }
+        IVitiRespository Viti{ get; }
 
         void Save();
     }

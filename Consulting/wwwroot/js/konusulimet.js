@@ -9,7 +9,7 @@ function loadDataTable() {
         "columns": [
             { data: 'ktitle', "width": "auto" },
             { data: 'kpershkrimi', "width": "auto" },
-            { data: 'lid.lname', "width": "auto" },
+            { data: 'lendet.lname', "width": "auto" },
             { data: 'kkohaEFillimit', "width": "auto" },
             { data: 'kkohaEMbarimit', "width": "auto" },
             {

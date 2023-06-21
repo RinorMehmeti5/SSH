@@ -9,22 +9,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System.Reflection.Metadata.Ecma335;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using NuGet.ProjectModel;
+
 
 namespace Consult.Models
 {
     public class Konsultimet
     {
         [Key]
-        public int? Kid { get; set; }
+        public int Kid { get; set; }
         [Required]
         [DisplayName("Titulli i Konsultimit")]
         public string? Ktitle { get; set; }
         [DisplayName("Koha e fillimit")]
-
         [Required]
         public DateTime KkohaEFillimit { get; set; }
         [DisplayName("Koha e mbarimit")]
-
+     
         public DateTime KkohaEMbarimit { get; set; }
         [DisplayName("Përshkrimi i konsultimit")]
 
@@ -34,11 +35,11 @@ namespace Consult.Models
         public int KLid { get; set; }
         [ForeignKey("KLid")]
         [ValidateNever]
-        public Lendet Lendet { get; set; }
+        public Lendet? Lendet { get; set; }
         public string? UserId { get; set; }
         [ForeignKey("UserId")]
         [ValidateNever]
-        public ApplicationUser? User{ get; set; }
-        public virtual ICollection<KonsultimAttend> KonsultimetAttendees { get; set; }
+        public ApplicationUser? User { get; set; }
+        public virtual ICollection<KonsultimAttend>? KonsultimetAttendees { get; set; }
     }
 }
