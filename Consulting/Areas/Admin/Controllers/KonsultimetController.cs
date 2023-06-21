@@ -14,7 +14,7 @@ using System.Security.Claims;
 namespace Consulting.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = SD.Role_Admin)]
+    [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Profesor)]
     public class KonsultimetController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
