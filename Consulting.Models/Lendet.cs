@@ -30,7 +30,5 @@ namespace Consult.Models
         [ForeignKey("VitiID")]
         [ValidateNever]
         public Viti? Viti { get; set; }
-        public IEnumerable<SelectListItem> DepartamentList { get; set; }
-        public IEnumerable<SelectListItem> VitiList{ get; set; }
     }
 }

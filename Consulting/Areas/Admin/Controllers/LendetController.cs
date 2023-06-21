@@ -1,5 +1,6 @@
 ﻿using Consult.DataAcess.Data;
 using Consult.Models;
+using Consult.Models.ViewModels;
 using Consult.Utility;
 using Cunsult.DataAcess.Repository;
 using Cunsult.DataAcess.Repository.IRepository;
@@ -27,24 +28,49 @@ namespace Consulting.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            LendetVM obj = new LendetVM();
+
+            obj.DepartamentList = _unitOfWork.Departamentet.GetAll().Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString(),
+            });
+
+            obj.VitiList = _unitOfWork.Viti.GetAll().Select(u => new SelectListItem
+            {
+                Text = u.VitiName,
+                Value = u.Vid.ToString(),
+            });
+
+            return View(obj);
         }
+
         [HttpPost]
-        public IActionResult Create(Lendet obj)
+        public IActionResult Create(LendetVM obj)
         {
-            //if (obj.Lname == obj.Ldescription.ToString())
-            //{
-            //    ModelState.AddModelError("Emri", "Emri i lendes dhe pershkrimi nuk mund te jene te njejta");
-            //}
             if (ModelState.IsValid)
             {
-                _unitOfWork.Lendet.Add(obj);
+                _unitOfWork.Lendet.Add(obj.Lendet);
                 _unitOfWork.Save();
+
                 TempData["success"] = "Lenda eshte krijuar me sukses";
                 return RedirectToAction("Index");
-
             }
-            return View();
+
+            // Only populate these lists if ModelState is not valid.
+            //obj.DepartamentList = _unitOfWork.Departamentet.GetAll().Select(u => new SelectListItem
+            //{
+            //    Text = u.Name,
+            //    Value = u.Id.ToString(),
+            //});
+
+            //obj.VitiList = _unitOfWork.Viti.GetAll().Select(u => new SelectListItem
+            //{
+            //    Text = u.VitiName,
+            //    Value = u.Vid.ToString(),
+            //});
+
+            return View(obj);
         }
         [HttpGet]
         public IActionResult Edit(int? id)

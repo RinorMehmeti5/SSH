@@ -1,4 +1,4 @@
-﻿@model Lendet
+﻿@model Consult.Models.ViewModels.LendetVM;
 
 <div class="card shadow border-0 mt-4">
     <div class="card-header bg-secondary m-lg-0 py-3">
@@ -11,22 +11,30 @@
         </div>
     </div>
     <div class="card-body p-4">
-        <form method="post" class="row">
+        <form method="post" class="row" >
             <div class="border p-3">
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Lname" class="form-control border-0 shadow"/>
-                    <label asp-for="Lname" class="ms-2"></label>
-                    <span asp-validation-for="Lname" class="text-danger"></span>
+                    <input asp-for="Lendet.Lname" class="form-control border-0 shadow"/>
+                    <label asp-for="Lendet.Lname" class="ms-2"></label>
+                    <span asp-validation-for="Lendet.Lname" class="text-danger"></span>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="DepartamentId" class="form-control border-0 shadow" />
-                    <label asp-for="DepartamentId" class="ms-2"></label>
-                    <span asp-validation-for="DepartamentId" class="text-danger"></span>
+                    <select asp-for="Lendet.DepartamentId" asp-items="@Model.DepartamentList" class="form-select border-0 shadow">
+                        <option disabled selected>
+                            --Selekto Departamentin --
+                        </option>
+                    </select>
+                    <label asp-for="Lendet.DepartamentId" class="ms-2"></label>
+                    <span asp-validation-for="Lendet.DepartamentId" class="text-danger"></span>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="VitiID" class="form-control border-0 shadow" />
-                    <label asp-for="VitiID" class="ms-2"></label>
-                    <span asp-validation-for="VitiID" class="text-danger"></span>
+                    <select asp-for="Lendet.VitiID" asp-items="@Model.VitiList" class="form-select border-0 shadow">
+                        <option disabled selected>
+                            --Selekto Vitin --
+                        </option>
+                    </select>
+                    <label asp-for="Lendet.VitiID" class="ms-2"></label>
+                    <span asp-validation-for="Lendet.VitiID" class="text-danger"></span>
                 </div>
                 <div class="row pt-2">
                     <div class="col-6 col-md-3">
