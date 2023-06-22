@@ -13,5 +13,10 @@ namespace Consulting.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public IActionResult _Form()
+        {
+            return PartialView();
+        }
     }
 }
